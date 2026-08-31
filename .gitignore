@@ -1,0 +1,11 @@
+.env
+*.log
+node_modules/
+render-service/generated/
+render-service/test-outputs/
+*.tmp
+*.tar.gz
+
+# Les fonds Figma utilisés en production restent versionnés.
+!render-service/backgrounds/*.png
+!render-service/backgrounds/*.svg
