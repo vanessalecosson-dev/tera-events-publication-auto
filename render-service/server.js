@@ -179,7 +179,10 @@ function buildHtml(templateName, data) {
 
   if (cfg.photoGradient) {
     const g = cfg.photoGradient;
-    boxesHtml += `<div style="position:absolute; left:0; top:0; width:${cfg.width}px; height:${cfg.height}px; background:linear-gradient(${g.direction}, ${g.stops.join(", ")});"></div>`;
+    const layers = g.layers
+      ? g.layers.map(layer => `linear-gradient(${layer.direction}, ${layer.stops.join(", ")})`).join(", ")
+      : `linear-gradient(${g.direction}, ${g.stops.join(", ")})`;
+    boxesHtml += `<div style="position:absolute; left:0; top:0; width:${cfg.width}px; height:${cfg.height}px; background-image:${layers};"></div>`;
   }
 
   for (const d of cfg.decorations || []) {

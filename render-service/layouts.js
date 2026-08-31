@@ -562,20 +562,30 @@ layouts["tera-ancragevendredi-a"] = {
 };
 layouts["tera-ancragevendredi-b"] = {
   width: 1080, height: 1080,
-  background: "ancrage-vendredi-b.png",
-  photoGradient: { direction: "to bottom", stops: ["rgba(8,26,74,0.15) 0%", "rgba(8,26,74,0.55) 55%", "rgba(8,26,74,0.92) 100%"] },
+  background: "ancrage-vendredi-b-source.png",
+  photoGradient: { layers: [
+    { direction: "180deg", stops: ["rgba(8,26,74,0.965) 0%", "rgba(8,26,74,0.851) 45%", "rgba(8,26,74,0.4) 80%", "rgba(8,26,74,0.8) 100%"] },
+    { direction: "90deg", stops: ["rgba(8,26,74,0.35) 0%", "rgba(8,26,74,0.35) 100%"] }
+  ] },
   root: grp({
-    x: 80, y: 117, w: 920, direction: "column", gap: 162, children: [
-      row({ gap: 24, align: "center", children: [
+    x: 0, y: 45, w: 1080, h: 1030, style: "position:absolute;", children: [
+      row({ x: 80, y: 72, w: 920, h: 26, gap: 24, align: "center", children: [
         line(58, 2, ANCRAGE_C.accent),
-        t({ data: "tag", font: "Geist", weight: 600, size: 20, color: ANCRAGE_C.text, uppercase: true, nowrap: true })
+        t({ static: "L’ANCRAGE DU VENDREDI", font: "Geist", weight: 600, size: 20, color: ANCRAGE_C.text, uppercase: true, nowrap: true })
       ]}),
-      grp({ direction: "column", gap: 24, children: [
-        t({ data: "headline", font: "Playfair Display", weight: 600, size: 46, color: ANCRAGE_C.text, lineHeight: 1.15 }),
-        line(80, 2, ANCRAGE_C.accent),
-        t({ data: "body", font: "Geist", weight: 500, size: 24, color: "rgba(255,249,241,0.85)", lineHeight: 1.35 }),
-        row({ justify: "center", children: [pill({ bg: ANCRAGE_C.accent, padding: "20px 40px", children: [t({ static: "DEMANDER UN DEVIS", font: "Geist", weight: 600, size: 22, color: "#ffffff", nowrap: true })] })] })
-      ]})
+      grp({ x: 80, y: 279.5, w: 920, h: 356, style: "position:absolute;", children: [
+        grp({ x: 0, y: 0, w: 920, h: 195, direction: "column", gap: 24, align: "center", style: "position:absolute; flex-shrink:0;", children: [
+          t({ data: "headline", font: "Playfair Display", weight: 700, size: 50, color: ANCRAGE_C.text, align: "center", lineHeight: 1.15 }),
+          line(80, 2, ANCRAGE_C.accent)
+        ]}),
+        grp({ x: 0, y: 231, w: 920, h: 80, style: "position:absolute;", children: [
+          t({ data: "body", w: 920, font: "Poppins", weight: 400, size: 25, color: "#e2e8f0", align: "center", lineHeight: 1.6 })
+        ]}),
+        grp({ x: 281, y: 347, w: 358, h: 70, direction: "row", align: "center", justify: "center", style: "position:absolute; background:#d49a8f; border-radius:100px; box-shadow:0 4px 8px rgba(0,0,0,0.25); flex-shrink:0;", children: [
+          t({ static: "WWW.TERA.EVENTS", font: "Poppins", weight: 700, size: 25, color: ANCRAGE_C.text, nowrap: true })
+        ]})
+      ]}),
+      row({ x: 451, y: 796, w: 150, h: 190, children: [img("logo-tera-ancrage.png", 150, 190)] })
     ]
   })
 };
