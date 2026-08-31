@@ -24,7 +24,7 @@ function nextWeekday(targetIsoWeekday, hour) {
 // (Décoration, Salle, Savoir-Faire Traiteur...) est maquettée et intégrée.
 const POOLS = {
   declic: ["eventplanning", "traiteur"],
-  savoirfaire: ["generique", "chiffre"],
+  savoirfaire: ["generique", "chiffre", "traiteur"],
   ancrage: ["a", "b"]
 };
 

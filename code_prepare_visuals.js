@@ -14,7 +14,8 @@ const TEMPLATE_MAP = {
     "tera-declic-eventplanning-s1",
     "tera-declic-eventplanning-s2",
     "tera-declic-eventplanning-s3",
-    "tera-declic-eventplanning-s4"
+    "tera-declic-eventplanning-s4",
+    "tera-declic-eventplanning-s5"
   ],
   "savoirfaire:generique": [
     "tera-savoirfairemercredi-s1",
@@ -29,6 +30,13 @@ const TEMPLATE_MAP = {
     "tera-chiffremercredi-s4",
     "tera-chiffremercredi-s5"
   ],
+  "savoirfaire:traiteur": [
+    "tera-savoirfairetraiteur-s1",
+    "tera-savoirfairetraiteur-s2",
+    "tera-savoirfairetraiteur-s3",
+    "tera-savoirfairetraiteur-s4",
+    "tera-savoirfairetraiteur-s5"
+  ],
   "ancrage:a": ["tera-ancragevendredi-a"],
   "ancrage:b": ["tera-ancragevendredi-b"]
 };
@@ -40,6 +48,7 @@ const STATIC_FIELDS = {
   "declic:eventplanning": { tag: "LE DÉCLIC · EVENT PLANNING" },
   "savoirfaire:generique": {},
   "savoirfaire:chiffre": { edition_label: "Le chiffre du mercredi" },
+  "savoirfaire:traiteur": {},
   "ancrage:a": { tag: "L'ANCRAGE DU VENDREDI" },
   "ancrage:b": { tag: "L'ANCRAGE DU VENDREDI", cta_label: "Demander un devis →" }
 };

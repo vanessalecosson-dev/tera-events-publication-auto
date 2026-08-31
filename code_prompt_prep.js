@@ -97,13 +97,14 @@ const SCHEMAS = {
   },
 
   "declic:eventplanning": {
-    angle: "Le Déclic — Event Planning : un carrousel de 4 slides qui lève une objection ou explique une formule de coordination, avec une conclusion qui invite à demander un devis.",
+    angle: "Le Déclic — Event Planning : un carrousel de 5 slides qui lève une objection ou explique une formule de coordination, avec une couverture forte et une conclusion qui invite à demander un devis.",
     schema: `{
   "slides": [
-    { "tag_formule": "3-4 mots MAJUSCULES, ex. 'FORMULE PREMIUM'", "titre": "3-6 mots, le nom de la formule ou de l'idée", "texte": "1-2 phrases (25-40 mots)" },
-    { "tag_formule": "...", "titre": "...", "texte": "..." },
-    { "tag_formule": "...", "titre": "...", "texte": "..." },
-    { "tag_formule": "3-4 mots MAJUSCULES pour la conclusion", "titre": "titre de conclusion", "texte": "1-2 phrases de synthèse (20-30 mots)", "cta_label": "3-5 mots MAJUSCULES, ex. 'DEMANDEZ VOTRE DEVIS'" }
+    { "titre_normal": "Première partie du titre de couverture (2-4 mots)", "titre_accent": "Partie accentuée du titre (1-3 mots)" },
+    { "tag_formule": "3-4 mots MAJUSCULES", "titre_normal": "Première partie du titre", "titre_accent": "Partie accentuée du titre", "texte": "1-2 phrases (25-40 mots)" },
+    { "tag_formule": "3-4 mots MAJUSCULES", "titre_normal": "Première partie du titre", "titre_accent": "Partie accentuée du titre", "texte": "1-2 phrases (25-40 mots)" },
+    { "tag_formule": "3-4 mots MAJUSCULES", "titre_normal": "Première partie du titre", "titre_accent": "Partie accentuée du titre", "texte": "1-2 phrases (25-40 mots)" },
+    { "tag_formule": "3-4 mots MAJUSCULES pour la conclusion", "titre_normal": "Première partie du titre de conclusion", "titre_accent": "Partie accentuée du titre", "texte": "1-2 phrases de synthèse (20-30 mots)", "cta_label": "3-5 mots MAJUSCULES, ex. 'DEMANDEZ VOTRE DEVIS'" }
   ],
   "caption": "Légende complète du post (300-450 caractères), qui pose le sujet du carrousel et se termine par une invitation concrète",
   "hashtags": ["5 à 8 hashtags", "mélange marque/local/expertise"]
@@ -135,6 +136,20 @@ const SCHEMAS = {
     { "badge": "1-2 mots", "titre": "Titre de conclusion (8-12 mots)", "texte": "1 phrase (15-25 mots)", "cta_question": "Question courte (5-8 mots)", "cta_action": "2-3 mots MAJUSCULES" }
   ],
   "caption": "Légende complète du post (300-450 caractères)",
+  "hashtags": ["5 à 8 hashtags", "mélange marque/local/expertise"]
+}`
+  },
+  "savoirfaire:traiteur": {
+    angle: "Le Savoir-Faire Traiteur : présenter clairement les différentes gammes TERA, leurs usages et les critères concrets pour choisir selon le format de l'événement.",
+    schema: `{
+  "slides": [
+    { "badge1": "2-3 mots pour le premier badge", "badge2": "2-3 mots pour le second badge", "texte": "Phrase d'introduction courte et concrète (15-25 mots)" },
+    { "gamme_ligne1": "GAMME", "gamme_ligne2": "DÉCOUVERTE", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
+    { "gamme_ligne1": "GAMME", "gamme_ligne2": "PRESTIGE", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
+    { "gamme_ligne1": "GAMME", "gamme_ligne2": "GALA", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
+    { "gamme_ligne1": "COMMENT", "gamme_ligne2": "CHOISIR ?", "badge": "2-4 mots", "texte": "Conseil de choix et invitation à demander un devis (20-35 mots)" }
+  ],
+  "caption": "Légende complète du post (300-450 caractères), concrète et orientée vers la demande de devis",
   "hashtags": ["5 à 8 hashtags", "mélange marque/local/expertise"]
 }`
   },

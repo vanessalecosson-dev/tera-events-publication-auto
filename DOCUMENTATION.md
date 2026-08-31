@@ -7,17 +7,17 @@ Documentation du projet, en cours de construction. Projet indépendant de `la-li
 TERA EVENTS publie 3 fois par semaine (lundi, mercredi, vendredi) sur Facebook, Instagram et LinkedIn, chaque créneau ayant un angle fixe. Le week-end reste au geste spontané de l'agence (réalisations, reels), hors de ce pipeline.
 
 **Composants prévus :**
-- **n8n** — même instance que La Lignée (`https://n8n-owcc.srv1896382.hstgr.cloud`), nouveau workflow indépendant, pas encore créé.
+- **n8n** — même instance que La Lignée, nouveau workflow indépendant, pas encore créé.
 - **Claude (Anthropic API)** — rédaction du texte, aucune recherche web (le contenu porte sur les services propres de TERA, pas des statistiques externes).
 - **`render-service`** — service Node.js/Playwright, code déjà écrit et testé localement (`render-service/`), pas encore déployé sur le VPS. Doit tourner dans son propre conteneur Docker (`tera-render`), séparé de `la-lignee-render`.
-- **Buffer** — pas encore connecté pour TERA. L'étape de publication est prête côté code mais désactivée en attendant les identifiants de channel.
+- **Buffer** — module de préparation présent, mais connexion et identifiants de canaux encore manquants.
 
 ## 2. Les 3 créneaux et leurs familles de gabarits
 
 | Jour | Famille | Rôle | Variantes disponibles |
 |---|---|---|---|
 | Lundi | Le Déclic | Lever une objection, répondre une question fréquente | `eventplanning` (carrousel 4 slides), `traiteur` (post unique, prix affiché) |
-| Mercredi | Savoir-Faire | Un conseil ou un chiffre TERA, utile et concret | `generique` (carrousel 4 slides, conseil pratique), `chiffre` (carrousel 5 slides, "Le chiffre du mercredi") |
+| Mercredi | Savoir-Faire | Un conseil, un chiffre ou une prestation TERA | `generique` (4 slides), `chiffre` (5 slides), `traiteur` (5 slides) |
 | Vendredi | L'Ancrage | Une accroche courte, ancrée dans la saison/le calendrier ivoirien | `a` (citation centrée), `b` (bloc + bouton CTA) |
 
 Chaque créneau a un **angle fixe** (le jour détermine l'angle), mais la **variante** utilisée à l'intérieur de cet angle **tourne chaque semaine**, pour que le contenu varie selon le sujet (demande explicite du cabinet). La rotation est gérée par `code_prepare_pilliers.js` via les données statiques du workflow n8n (`$getWorkflowStaticData`), un index par famille qui avance d'un cran à chaque exécution hebdomadaire.
@@ -30,36 +30,34 @@ Les pools de variantes ne contiennent que ce qui est réellement dessiné dans F
 - `code_prompt_prep.js` — construit le prompt Claude : charte éditoriale + schéma JSON exact par famille/variante. Contient les deux règles absolues du cabinet (écriture indétectable comme IA, orthographe irréprochable) et les faits TERA vérifiés (seule source autorisée pour tout chiffre/prix cité).
 - `code_parse_response.js` — parsing anti-crash de la réponse Claude (repris tel quel du pattern La Lignée).
 - `code_prepare_visuals.js` — transforme le JSON de Claude en appels au render-service, un par slide, en injectant les éléments de marque fixes (tags, coordonnées, CTA statiques) que Claude ne génère jamais.
+- `code_prepare_pack.js` — regroupe les trois publications dans un formulaire de validation hebdomadaire.
+- `code_traiter_validation.js` — répartit les décisions Valider, Modifier et Refuser.
+- `code_prepare_regeneration.js` — prépare une nouvelle tentative à partir du commentaire de validation, avec trois tentatives maximum.
+- `code_prepare_buffer.js` — prépare une programmation pour Facebook, Instagram et LinkedIn à partir des canaux définis dans l'environnement n8n.
 - `render-service/` — service de rendu, voir §4.
 
-**Encore à écrire** (mécaniques, pas encore fait) :
-- `code_prepare_pack.js` — regroupe les publications de la semaine en un seul e-mail de validation (aperçu + décision + commentaire par créneau), sur le modèle de `code_hebdo_prepare_pack.js` de La Lignée.
-- `code_traiter_validation.js` — répartit les décisions du formulaire de validation.
-- `code_prepare_buffer.js` — construit les mutations Buffer, écrit mais avec `CHANNELS` vide (à renseigner une fois Buffer connecté).
-- `code_prepare_regeneration.js` — reboucle sur le prompt avec le commentaire du cabinet en cas de "Modifier".
+**Encore à intégrer dans n8n** : l'appel Anthropic, le rendu, le formulaire de validation, les branches de décision, la boucle de régénération et l'appel Buffer.
 
 ## 4. render-service
 
-`render-service/layouts.js` définit **16 gabarits**, reconstruits fidèlement depuis le fichier Figma `GABARIT-TERA-EVENTS` (`vZn7iir8VGn5fh8M9tIfXZ`) : positions, polices (Playfair Display, Poppins, Caveat, DM Serif Display, DM Sans, League Spartan, Geist), couleurs, dégradés, ombres portées et éléments décoratifs (lignes, halo, icône ondes sonores, flèche, pastilles de progression) repris exactement des frames Figma, pas approximés.
+`render-service/layouts.js` définit **22 gabarits**, reconstruits depuis le fichier Figma `GABARIT-TERA-EVENTS` (`vZn7iir8VGn5fh8M9tIfXZ`) : positions, polices, couleurs, dégradés, ombres et éléments décoratifs.
 
 Contrairement à La Lignée, **aucune génération de photo par IA** : chaque gabarit a sa photo (ou son dégradé) intégrée directement dans `render-service/backgrounds/`, exportée depuis Figma. La variété vient du nombre de gabarits disponibles, pas d'une photo qui change à chaque publication.
 
 `render-service/server.js` utilise un modèle de champs positionnés librement (pas un empilement de colonnes comme La Lignée) : chaque gabarit déclare un tableau `fields` avec position absolue, police, couleur, et soit `data: "nomDuChamp"` (rempli par Claude) soit `static: "..."` (élément de marque fixe). Testé et validé en local (`PORT=3100 node server.js`), pipeline complet vérifié de bout en bout avec un JSON simulé conforme au schéma.
 
-**Connu et documenté comme limitation actuelle :**
-- La slide de couverture du carrousel Déclic Event Planning (slide 1/5 dans Figma) n'existe pas encore : le carrousel publié n'a que 4 slides (les slides 2 à 5 de Figma, renumérotées 1 à 4).
-- `tera-savoirfairemercredi-s1` et `-s3` réutilisent la même photo faute d'un asset dédié récupéré pour la slide 3 (Figma ne l'exposait pas comme fill direct).
+**Limitations actuelles :**
 - Aucun format Story (1080×1920) n'est encore dessiné dans Figma pour ces gabarits — à faire.
-- Pas de variante Décoration ni Salle pour l'instant, ni pour Le Déclic ni pour Savoir-Faire.
+- Pas de variante Décoration ni Salle pour l'instant.
 
 ## 5. Prochaines étapes
 
-1. Écrire les fichiers n8n restants (pack de validation, traitement de la validation, régénération, préparation Buffer stubée).
-2. Déployer `render-service` sur le VPS existant (nouveau conteneur Docker `tera-render`, nouvelle route Traefik).
-3. Créer le workflow n8n (via l'API n8n, désactivé à la création pour revue avant activation).
-4. Connecter Buffer pour TERA (comptes FB/IG/LinkedIn) et renseigner les identifiants de channel dans `code_prepare_buffer.js`.
-5. Maquetter les gabarits manquants (couverture Déclic, Décoration, Salle, Savoir-Faire Traiteur, formats Story) au fur et à mesure des besoins.
+1. Déployer `render-service` sur le VPS existant dans un conteneur `tera-render` séparé.
+2. Créer le workflow n8n, désactivé à la création pour revue.
+3. Connecter Buffer pour TERA et renseigner les identifiants de canaux dans l'environnement n8n.
+4. Tester le parcours génération → rendu → validation → régénération éventuelle → programmation.
+5. Maquetter les variantes Décoration, Salle et les formats Story.
 
 ## 6. Accès & identifiants
 
-Mêmes accès que `la-lignee-publication-auto` (même VPS, même instance n8n) — voir le `.env` de ce dépôt (hors Git) et `~/.ssh/la_lignee_vps_ed25519`. Aucun identifiant Buffer TERA pour l'instant.
+Les noms de variables attendues sont documentés dans `.env.example`. Le fichier `.env` local est ignoré par Git et ne doit jamais contenir de valeur destinée au dépôt. Aucun identifiant Buffer TERA n'est renseigné pour l'instant.
