@@ -2,10 +2,9 @@
 *.log
 node_modules/
 render-service/generated/*
-!render-service/generated/22-gabarits/
-!render-service/generated/22-gabarits/*.png
 !render-service/generated/figma-source/
 !render-service/generated/figma-source/*.png
+!render-service/generated/figma-source/manifest.json
 render-service/test-outputs/
 *.tmp
 *.tar.gz

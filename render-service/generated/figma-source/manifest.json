@@ -1,0 +1,28 @@
+{
+  "fileKey": "vZn7iir8VGn5fh8M9tIfXZ",
+  "status": "references-figma-conformes",
+  "templates": [
+    { "template": "tera-ancragevendredi-b", "nodeId": "155:4", "file": "01-ancrage-vendredi-b.png", "width": 1080, "height": 1080 },
+    { "template": "tera-ancragevendredi-a", "nodeId": "149:4", "file": "02-ancrage-vendredi-a.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-eventplanning-s1", "nodeId": "14:58", "file": "03-declic-cover.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-eventplanning-s2", "nodeId": "147:7", "file": "04-declic-s2.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-eventplanning-s3", "nodeId": "147:39", "file": "05-declic-s3.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-eventplanning-s4", "nodeId": "147:71", "file": "06-declic-s4.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-eventplanning-s5", "nodeId": "147:103", "file": "07-declic-s5.png", "width": 1080, "height": 1080 },
+    { "template": "tera-declic-traiteur", "nodeId": "120:64", "file": "08-declic-traiteur.png", "width": 1226, "height": 1350 },
+    { "template": "tera-savoirfairetraiteur-s1", "nodeId": "124:4", "file": "09-savoirfaire-traiteur-s1.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairetraiteur-s2", "nodeId": "128:7", "file": "10-savoirfaire-traiteur-s2.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairetraiteur-s3", "nodeId": "128:21", "file": "11-savoirfaire-traiteur-s3.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairetraiteur-s4", "nodeId": "128:35", "file": "12-savoirfaire-traiteur-s4.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairetraiteur-s5", "nodeId": "128:49", "file": "13-savoirfaire-traiteur-s5.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairemercredi-s1", "nodeId": "112:56", "file": "14-savoirfaire-mercredi-s1.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairemercredi-s2", "nodeId": "114:157", "file": "15-savoirfaire-mercredi-s2.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairemercredi-s3", "nodeId": "114:177", "file": "16-savoirfaire-mercredi-s3.png", "width": 1080, "height": 1080 },
+    { "template": "tera-savoirfairemercredi-s4", "nodeId": "114:210", "file": "17-savoirfaire-mercredi-s4.png", "width": 1080, "height": 1080 },
+    { "template": "tera-chiffremercredi-s1", "nodeId": "110:19", "file": "18-chiffre-mercredi-s1.png", "width": 1121, "height": 1350 },
+    { "template": "tera-chiffremercredi-s2", "nodeId": "114:267", "file": "19-chiffre-mercredi-s2.png", "width": 1121, "height": 1350 },
+    { "template": "tera-chiffremercredi-s3", "nodeId": "114:291", "file": "20-chiffre-mercredi-s3.png", "width": 1121, "height": 1350 },
+    { "template": "tera-chiffremercredi-s4", "nodeId": "114:330", "file": "21-chiffre-mercredi-s4.png", "width": 1121, "height": 1350 },
+    { "template": "tera-chiffremercredi-s5", "nodeId": "114:364", "file": "22-chiffre-mercredi-s5.png", "width": 1121, "height": 1350 }
+  ]
+}

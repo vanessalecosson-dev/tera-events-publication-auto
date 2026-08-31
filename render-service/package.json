@@ -4,8 +4,7 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "generate:previews": "node generate-previews.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.19.2",
