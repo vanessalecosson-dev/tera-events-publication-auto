@@ -83,7 +83,7 @@ function renderNode(n, data) {
     const normal = resolveText({ data: n.dataNormal }, data);
     const accent = resolveText({ data: n.dataAccent }, data);
     if (!normal && !accent) return "";
-    return `<div style="font-family:'${n.font}', serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.15}; color:${n.color}; width:100%; flex-shrink:0;">${escapeHtml(normal)} <span style="font-style:italic; color:${n.accentColor};">${escapeHtml(accent)}</span></div>`;
+    return `<div style="font-family:'${n.font}', serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.15}; color:${n.color}; width:100%; flex-shrink:0;">${escapeHtml(normal)} <span style="font-style:italic; font-weight:${n.accentWeight || n.weight}; color:${n.accentColor};">${escapeHtml(accent)}</span></div>`;
   }
 
   if (n.type === "quoteTwoTone") {
