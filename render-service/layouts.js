@@ -29,18 +29,21 @@ const DECLIC_LINE = "#C4956A";
 
 layouts["tera-declic-eventplanning-s1"] = {
   width: 1080, height: 1080,
-  background: "declic-eventplanning-cover.png",
-  photoGradient: { direction: "to bottom", stops: ["rgba(3,7,30,0.6) 0%", "rgba(11,24,84,0.75) 100%"] },
+  background: "declic-eventplanning-cover-source.png",
+  photoGradient: { layers: [
+    { direction: "90deg", stops: ["rgba(3,7,30,0.15) 0%", "rgba(3,7,30,0.15) 100%"] },
+    { direction: "90deg", stops: ["rgba(11,24,84,0.4) 0%", "rgba(11,24,84,0.4) 100%"] }
+  ] },
   root: grp({
     x: 0, y: 0, w: 1080, h: 1080, padding: "64px", direction: "column", justify: "between",
     children: [
-      row({ justify: "between", align: "center", children: [
-        img(LOGO_FILE, 118, 126),
-        t({ static: "LE DÉCLIC · EVENT PLANNING", font: "Poppins", weight: 700, size: 18, color: "#ffffff", uppercase: true, nowrap: true })
+      row({ w: 952, h: 148, justify: "between", align: "center", children: [
+        { type: "image", file: "logo-tera-declic.png", w: 138, h: 148, fit: "cover" },
+        t({ static: "LE DÉCLIC  ·  EVENT PLANNING", font: "Poppins", weight: 700, size: 22, color: "#ffffff", uppercase: true, nowrap: true })
       ]}),
-      { type: "titleTwoTone", dataNormal: "titre_normal", dataAccent: "titre_accent", font: "Playfair Display", weight: 500, size: 62, color: DECLIC_EP.text, accentColor: DECLIC_EP.accent, lineHeight: 1.15 },
-      row({ justify: "end", children: [
-        grp({ direction: "column", align: "end", gap: 2, children: [
+      { type: "titleTwoTone", dataNormal: "titre_normal", dataAccent: "titre_accent", font: "Playfair Display", weight: 500, size: 90, color: DECLIC_EP.text, accentColor: DECLIC_EP.accent, lineHeight: 1.15 },
+      row({ w: 938, h: 146, style: "position:relative;", children: [
+        grp({ x: 738, y: 34, w: 200, direction: "column", align: "end", gap: 4, children: [
           t({ static: "SWIPE POUR DÉCOUVRIR", font: "League Spartan", weight: 400, size: 16, color: "#ffffff", uppercase: true, nowrap: true }),
           t({ static: "CE QUE PERSONNE", font: "League Spartan", weight: 400, size: 16, color: "#ffffff", uppercase: true, nowrap: true }),
           t({ static: "NE VOUS DIT", font: "Poppins", weight: 700, size: 16, color: "#b78d6a", uppercase: true, underline: true, nowrap: true })
