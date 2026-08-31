@@ -86,8 +86,15 @@ function renderNode(n, data) {
     return `<div style="font-family:'${n.font}', serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.15}; color:${n.color}; width:100%; flex-shrink:0;">${escapeHtml(normal)} <span style="font-style:italic; color:${n.accentColor};">${escapeHtml(accent)}</span></div>`;
   }
 
+  if (n.type === "quoteTwoTone") {
+    const accent = resolveText({ data: n.dataAccent }, data);
+    const main = resolveText({ data: n.dataMain }, data);
+    if (!accent && !main) return "";
+    return `<div style="font-family:'${n.font}', serif; font-size:${n.size}px; line-height:${n.lineHeight}; width:${n.w}px; color:${n.color}; text-align:center; flex-shrink:0;"><span style="font-weight:700; font-style:normal; color:${n.accentColor};">${escapeHtml(accent)}</span><span style="font-weight:500; font-style:italic;">${accent && main ? " " : ""}${escapeHtml(main)}</span></div>`;
+  }
+
   if (n.type === "image") {
-    return `<img src="${loadFile(n.file)}" style="width:${n.w}px; height:${n.h}px; object-fit:contain; flex-shrink:0;" />`;
+    return `<img src="${loadFile(n.file)}" style="width:${n.w}px; height:${n.h}px; object-fit:${n.fit || "contain"}; flex-shrink:0;" />`;
   }
 
   if (n.type === "line") {

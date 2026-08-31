@@ -158,7 +158,8 @@ const SCHEMAS = {
     angle: "L'Ancrage du vendredi : une citation courte et marquante, ancrée dans la saison ou le calendrier ivoirien du moment (voir la ligne éditoriale pour le calendrier culturel), qui projette le lecteur dans son propre événement.",
     schema: `{
   "slides": [{
-    "citation": "Une phrase-citation forte (18-28 mots), ancrée dans une saison ou un moment ivoirien précis"
+    "citation_accent": "L’accroche saisonnière ou le moment clé en 2-5 mots, par exemple 'Rentrée corporate :'",
+    "citation_main": "La suite de la citation en 12-22 mots, concrète et directement liée à l’événement"
   }],
   "caption": "Légende complète du post (250-400 caractères)",
   "hashtags": ["5 à 8 hashtags", "mélange marque/local/saisonnier"]

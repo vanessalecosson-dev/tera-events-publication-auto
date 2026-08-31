@@ -544,19 +544,22 @@ layouts["tera-chiffremercredi-s5"] = chiffreRoot(
 // =========================================================================
 layouts["tera-ancragevendredi-a"] = {
   width: 1080, height: 1080,
-  background: "ancrage-vendredi-a.png",
-  photoGradient: { direction: "to bottom", stops: ["rgba(7,19,51,0.4) 0%", "rgba(11,32,90,0.8) 45%", "rgba(8,26,74,0.96) 80%", "#081a4a 100%"] },
+  background: "ancrage-vendredi-a-source.png",
+  photoGradient: { layers: [
+    { direction: "180deg", stops: ["rgba(7,19,51,0.4) 0%", "rgba(11,32,90,0.8) 45%", "rgba(8,26,74,0.961) 80%", "rgb(8,26,74) 100%"] },
+    { direction: "90deg", stops: ["rgba(8,26,74,0.25) 0%", "rgba(8,26,74,0.25) 100%"] }
+  ] },
   root: grp({
-    x: 96, y: 99, w: 888, direction: "column", gap: 227, children: [
-      row({ gap: 24, align: "center", children: [
+    x: 0, y: 0, w: 1080, h: 1080, style: "position:absolute;", children: [
+      row({ x: 96, y: 99, w: 888, h: 26, gap: 24, align: "center", children: [
         line(58, 2, ANCRAGE_C.accent),
-        t({ data: "tag", font: "Geist", weight: 600, size: 20, color: ANCRAGE_C.text, uppercase: true, nowrap: true })
+        t({ static: "L’ANCRAGE DU VENDREDI", font: "Geist", weight: 600, size: 20, color: ANCRAGE_C.text, uppercase: true, nowrap: true })
       ]}),
-      grp({ direction: "column", align: "center", gap: 24, children: [
-        t({ data: "citation", font: "Playfair Display", weight: 500, italic: true, size: 52, color: ANCRAGE_C.text, align: "center", lineHeight: 1.2 }),
-        line(120, 2, ANCRAGE_C.accent)
+      grp({ x: 96, y: 352, w: 888, h: 342, style: "position:absolute;", children: [
+        { type: "quoteTwoTone", dataAccent: "citation_accent", dataMain: "citation_main", font: "Playfair Display", size: 65, lineHeight: 1.2, w: 888, color: ANCRAGE_C.text, accentColor: ANCRAGE_C.accent },
+        row({ x: 384, y: 340, w: 120, h: 2, children: [line(120, 2, ANCRAGE_C.accent)] })
       ]}),
-      row({ justify: "center", children: [img(LOGO_FILE, 130, 143)] })
+      row({ x: 475, y: 874, w: 130, h: 143, children: [{ type: "image", file: "logo-tera-ancrage.png", w: 130, h: 143, fit: "cover" }] })
     ]
   })
 };
