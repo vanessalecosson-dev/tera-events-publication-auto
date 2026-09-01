@@ -63,9 +63,15 @@ const slides = Array.isArray(d.slides) ? d.slides : [];
 const hashtagsText = Array.isArray(d.hashtags) ? d.hashtags.join(" ") : (d.hashtags || "");
 const caption = [d.caption, hashtagsText].filter(Boolean).join("\n\n");
 const postId = $execution.id + "-" + d.jour;
+const backgroundImages = Array.isArray(d.background_images) ? d.background_images : [];
 
 const results = templates.map((template, idx) => {
   const slideFields = slides[idx] || {};
+  // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.
+  // Une image propre à la slide est prioritaire, puis celle de la liste du carrousel, puis le
+  // fond commun de la publication. Sans image fournie, le fond Figma canonique reste le fallback.
+  const backgroundImage = slideFields.background_image || backgroundImages[idx] || d.background_image;
+  const backgroundPosition = slideFields.background_position || d.background_position;
   return {
     json: {
       post_id: postId,
@@ -76,7 +82,12 @@ const results = templates.map((template, idx) => {
       slide_index: idx + 1,
       slide_count: templates.length,
       target_due_at: d.target_due_at,
-      render_body: { ...STATIC_FIELDS[key], ...slideFields },
+      render_body: {
+        ...STATIC_FIELDS[key],
+        ...slideFields,
+        ...(backgroundImage ? { background_image: backgroundImage } : {}),
+        ...(backgroundPosition ? { background_position: backgroundPosition } : {})
+      },
       caption
     }
   };

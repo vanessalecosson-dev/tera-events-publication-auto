@@ -358,12 +358,12 @@ layouts["tera-savoirfairetraiteur-s1"] = {
             t({ static: "SAVOIR", font: "Playfair Display", weight: 400, size: 100, color: "#ffffff", align: "center", lineHeight: 0.85, nowrap: true }),
             t({ static: "FAIRE", font: "Playfair Display", weight: 700, italic: true, size: 120, color: "#ffffff", align: "center", lineHeight: 0.85, nowrap: true, marginTop: -10 })
           ]}),
-          row({ justify: "center", marginTop: 16, children: [
-            pill({ bg: "#ffffff", rotate: -3, padding: "16px 36px", children: [t({ data: "badge1", font: "Poppins", weight: 700, size: 35, color: SAVOIR_TRAITEUR_C.badge, align: "center", nowrap: true })] })
+          row({ justify: "center", marginTop: 41, children: [
+            pill({ bg: "#ffffff", rotate: -3, padding: "0 36px 16px", w: 703, h: 96, shadow: "0px 8px 8px rgba(0,0,0,0.15)", children: [t({ data: "badge1", font: "Poppins", weight: 700, size: 35, color: SAVOIR_TRAITEUR_C.badge, align: "center", nowrap: true })] })
           ]})
         ]}),
         grp({ direction: "column", align: "center", gap: 40, children: [
-          pill({ bg: "#ffffff", padding: "22px 0", alignSelf: "stretch", children: [row({ justify: "center", w: 900, children: [t({ data: "badge2", font: "Poppins", weight: 600, size: 40, color: SAVOIR_TRAITEUR_C.cta, align: "center", nowrap: true })] })] }),
+          pill({ bg: "#ffffff", padding: "22px 0", h: 104, shadow: "0px 12px 12px rgba(0,0,0,0.2)", alignSelf: "stretch", children: [row({ justify: "center", w: 900, children: [t({ data: "badge2", font: "Poppins", weight: 600, size: 40, color: SAVOIR_TRAITEUR_C.cta, align: "center", nowrap: true })] })] }),
           t({ data: "texte", font: "Poppins", weight: 500, size: 25, color: "#ffffff", align: "center", lineHeight: 1.5 })
         ]})
       ]})

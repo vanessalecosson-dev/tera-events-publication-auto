@@ -110,8 +110,11 @@ function renderNode(n, data) {
   if (n.type === "pill" || n.type === "outlinePill") {
     const bg = n.type === "pill" ? `background:${n.bg};` : `border:1.5px solid ${n.border};`;
     const rotate = n.rotate ? `transform:rotate(${n.rotate}deg);` : "";
+    const w = n.w ? `width:${n.w}px;` : "";
+    const h = n.h ? `height:${n.h}px;` : "";
+    const shadow = n.shadow ? `box-shadow:${n.shadow};` : "";
     const inner = (n.children || []).map(c => renderNode(c, data)).join("");
-    return `<div style="display:inline-flex; ${bg} border-radius:999px; padding:${n.padding || "10px 22px"}; ${rotate} align-items:center; justify-content:center; flex-shrink:0; align-self:${n.alignSelf || "flex-start"};">${inner}</div>`;
+    return `<div style="display:inline-flex; ${bg} ${w} ${h} ${shadow} border-radius:999px; padding:${n.padding || "10px 22px"}; ${rotate} align-items:center; justify-content:center; flex-shrink:0; align-self:${n.alignSelf || "flex-start"};">${inner}</div>`;
   }
 
   if (n.type === "bar") {
@@ -174,7 +177,12 @@ function decorationHtml(d) {
 function buildHtml(templateName, data) {
   const cfg = layouts[templateName];
   let canvasBackground;
-  if (cfg.background) {
+  const dynamicBackground = data.background_image || data.backgroundImage;
+  if (dynamicBackground) {
+    const backgroundUrl = String(dynamicBackground).replace(/["'()\\\n\r]/g, encodeURIComponent);
+    const backgroundPosition = String(data.background_position || "center").replace(/[^a-zA-Z0-9% .-]/g, "");
+    canvasBackground = `background-image:url("${backgroundUrl}"); background-size:cover; background-position:${backgroundPosition};`;
+  } else if (cfg.background) {
     canvasBackground = `background-image:url('${loadFile(cfg.background)}'); background-size:cover; background-position:center;`;
   } else if (cfg.radialGradient) {
     const g = cfg.radialGradient;

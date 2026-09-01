@@ -143,7 +143,7 @@ const SCHEMAS = {
     angle: "Le Savoir-Faire Traiteur : présenter clairement les différentes gammes TERA, leurs usages et les critères concrets pour choisir selon le format de l'événement.",
     schema: `{
   "slides": [
-    { "badge1": "2-3 mots pour le premier badge", "badge2": "2-3 mots pour le second badge", "texte": "Phrase d'introduction courte et concrète (15-25 mots)" },
+    { "badge1": "4-6 mots, ex. 'Des gammes Découverte à Gala'", "badge2": "4-6 mots, ex. 'Comment choisir le bon menu'", "texte": "Phrase d'introduction courte et concrète (15-25 mots)" },
     { "gamme_ligne1": "GAMME", "gamme_ligne2": "DÉCOUVERTE", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
     { "gamme_ligne1": "GAMME", "gamme_ligne2": "PRESTIGE", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
     { "gamme_ligne1": "GAMME", "gamme_ligne2": "GALA", "badge": "2-4 mots", "texte": "Description claire de la gamme (20-35 mots)" },
