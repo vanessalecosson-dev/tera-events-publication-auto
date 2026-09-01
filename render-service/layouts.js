@@ -250,13 +250,17 @@ layouts["tera-savoirfairemercredi-s2"] = savoirRoot("savoirfaire-mercredi-s2.png
   t({ static: "02 / 4", font: "Playfair Display", weight: 400, italic: true, size: 20, color: SAVOIR.accentLight, nowrap: true })
 ]}), [
   t({ data: "repere", font: "Playfair Display", weight: 400, italic: true, size: 26, color: SAVOIR.accentLight, nowrap: true }),
-  t({ data: "titre", font: "DM Sans", weight: 800, size: 62, color: SAVOIR.text, lineHeight: 0.95 }),
+  t({ data: "titre", font: "DM Sans", weight: 800, size: 74, color: SAVOIR.text, lineHeight: 0.95, shadow: "0px 5px 18px rgba(0,0,0,0.4)" }),
   row({ gap: 24, align: "center", children: [
-    line(8, 100, SAVOIR.accent, 1),
-    t({ data: "texte", font: "DM Sans", weight: 400, size: 24, color: SAVOIR.textDim, lineHeight: 1.35 })
+    { type: "line", w: 8, h: 112, color: SAVOIR.accent, opacity: 1, rounded: true },
+    t({ data: "texte", font: "DM Sans", weight: 400, size: 26, color: SAVOIR.textDim, lineHeight: 1.35 })
   ]}),
   SAVOIR_FOOTER
 ]);
+layouts["tera-savoirfairemercredi-s2"].photoGradient = {
+  direction: "to bottom",
+  stops: ["rgba(7,26,63,0.2) 0%", "rgba(7,26,63,0.53) 46%", "rgba(6,20,52,0.98) 100%"]
+};
 
 layouts["tera-savoirfairemercredi-s3"] = savoirRoot(null, {
   cx: 810, cy: 194.4, rx: 270, ry: 475, stops: ["rgba(23,54,122,1) 0%", "rgba(15,37,87,1) 50%", "rgba(6,20,52,1) 100%"]
