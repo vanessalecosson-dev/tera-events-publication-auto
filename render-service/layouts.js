@@ -393,7 +393,7 @@ layouts["tera-savoirfairetraiteur-s4"] = savoirTraiteur("savoirfairetraiteur-s3.
 layouts["tera-savoirfairetraiteur-s5"] = savoirTraiteur("savoirfairetraiteur-s4.png", 79, "5/5", [
   GAMME_HEADER("gamme_ligne1", "gamme_ligne2", "badge"),
   grp({ direction: "column", align: "center", gap: 32, children: [
-    pill({ bg: "#ffffff", padding: "22px 0", alignSelf: "stretch", children: [row({ justify: "center", w: 900, children: [t({ static: "DEMANDEZ VOTRE DEVIS", font: "Poppins", weight: 700, size: 36, color: SAVOIR_TRAITEUR_C.cta, align: "center", nowrap: true })] })] }),
+    pill({ bg: "#ffffff", padding: "22px 0", h: 98, shadow: "0px 12px 12px rgba(0,0,0,0.2)", alignSelf: "stretch", children: [t({ static: "DEMANDEZ VOTRE DEVIS", w: 900, font: "Poppins", weight: 700, size: 36, color: SAVOIR_TRAITEUR_C.cta, align: "center", nowrap: true })] }),
     t({ data: "texte", font: "Poppins", weight: 500, size: 24, color: "#ffffff", align: "center", lineHeight: 1.5 })
   ]})
 ]);
