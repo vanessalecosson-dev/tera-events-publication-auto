@@ -103,10 +103,10 @@ layouts["tera-declic-eventplanning-s4"] = declicEP("declic-eventplanning-s4-sour
   line(120, 3, DECLIC_LINE),
   t({ data: "texte", font: "Poppins", weight: 400, size: 24, color: DECLIC_EP.textDim, lineHeight: 1.6 })
 ]);
-layouts["tera-declic-eventplanning-s5"] = declicEP("declic-eventplanning-s5.png", 32, 5, [
+layouts["tera-declic-eventplanning-s5"] = declicEP("declic-eventplanning-s5-source.png", 32, 5, [
   grp({ direction: "column", gap: 8, children: [
     t({ data: "tag_formule", font: "Poppins", weight: 700, size: 20, color: DECLIC_EP.accent, uppercase: true, nowrap: true }),
-    { type: "titleTwoTone", dataNormal: "titre_normal", dataAccent: "titre_accent", font: "Playfair Display", weight: 500, size: 60, color: DECLIC_EP.text, accentColor: DECLIC_EP.accent, lineHeight: 1.15 }
+    { type: "titleTwoTone", dataNormal: "titre_normal", dataAccent: "titre_accent", font: "Playfair Display", weight: 500, accentWeight: 400, size: 64, color: DECLIC_EP.text, accentColor: DECLIC_EP.accent, lineHeight: 1.15 }
   ]}),
   t({ data: "texte", font: "Poppins", weight: 400, size: 24, color: DECLIC_EP.textDim, lineHeight: 1.6 }),
   grp({ direction: "column", gap: 8, children: [
