@@ -16,7 +16,8 @@ function loadFile(name) {
   if (fileDataUris[name]) return fileDataUris[name];
   const filePath = path.join(__dirname, "backgrounds", name);
   const buf = fs.readFileSync(filePath);
-  const uri = "data:image/png;base64," + buf.toString("base64");
+  const mime = path.extname(name).toLowerCase() === ".svg" ? "image/svg+xml" : "image/png";
+  const uri = `data:${mime};base64,` + buf.toString("base64");
   fileDataUris[name] = uri;
   return uri;
 }

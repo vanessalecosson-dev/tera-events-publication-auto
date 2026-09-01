@@ -120,29 +120,34 @@ layouts["tera-declic-eventplanning-s5"] = declicEP("declic-eventplanning-s5-sour
 // =========================================================================
 layouts["tera-declic-traiteur"] = {
   width: 1226, height: 1350,
-  background: "declic-traiteur.png",
-  photoGradient: { direction: "to bottom", stops: ["rgba(7,19,31,0.95) 0%", "rgba(7,19,31,0.67) 48%", "rgba(7,19,31,0.4) 100%"] },
+  background: "declic-traiteur-source.png",
+  photoGradient: { direction: "180deg", stops: ["rgba(7,19,31,0.95) 0%", "rgba(7,19,31,0.4) 48%", "rgba(7,19,31,0.67) 100%"] },
   root: grp({
     x: 0, y: 0, w: 1226, h: 1350, padding: "80px", direction: "column", justify: "between",
     children: [
       row({ justify: "between", align: "center", children: [
-        img(LOGO_FILE, 138, 148),
-        t({ static: "LE DÉCLIC · TRAITEUR", font: "Poppins", weight: 700, size: 22, color: "#ffffff", uppercase: true, nowrap: true })
+        { type: "image", file: "logo-tera-declic.png", w: 138, h: 148, fit: "cover" },
+        t({ static: "LE DÉCLIC  ·  TRAITEUR", font: "Poppins", weight: 700, size: 22, color: "#ffffff", uppercase: true, nowrap: true })
       ]}),
       grp({ w: 683, direction: "column", gap: 24, children: [
-        row({ justify: "center", w: 440, children: [t({ data: "accroche", font: "Caveat", weight: 400, size: 50, color: DECLIC_TRAITEUR_C.accent, rotate: 3, nowrap: true })] }),
+        row({ justify: "center", w: 427, h: 85, children: [t({ data: "accroche", font: "Caveat", weight: 400, size: 50, color: DECLIC_TRAITEUR_C.accent, rotate: 3, nowrap: true })] }),
         t({ data: "titre", font: "Playfair Display", weight: 700, italic: true, size: 80, color: DECLIC_TRAITEUR_C.text, lineHeight: 0.98 }),
         t({ data: "texte", font: "Poppins", weight: 500, size: 35, color: DECLIC_TRAITEUR_C.textDim, lineHeight: 1.35 }),
-        row({ gap: 16, align: "center", children: [
-          t({ data: "prix", font: "DM Serif Display", weight: 400, size: 130, color: "#ffffff", nowrap: true, lineHeight: 1, shadow: "0px 16px 20px rgba(0,0,0,0.32)" }),
-          grp({ direction: "column", gap: 4, children: [
-            t({ static: "FCFA", font: "Poppins", weight: 800, size: 46, color: DECLIC_TRAITEUR_C.accent, nowrap: true }),
+        row({ gap: 16, align: "end", children: [
+          t({ data: "prix", w: 514, font: "DM Serif Display", weight: 400, size: 178, color: "#ffffff", nowrap: true, lineHeight: 0.82, shadow: "0px 16px 20px rgba(0,0,0,0.32)" }),
+          grp({ h: 162, direction: "column", gap: 4, style: "padding-bottom:14px;", children: [
+            t({ static: "FCFA", font: "Poppins", weight: 800, size: 58, color: DECLIC_TRAITEUR_C.accent, nowrap: true }),
             t({ static: "PAR PERSONNE", font: "Poppins", weight: 700, size: 20, color: DECLIC_TRAITEUR_C.textDim, nowrap: true })
           ]})
         ]})
       ]}),
       row({ justify: "between", align: "center", children: [
-        pill({ bg: DECLIC_TRAITEUR_C.accent, padding: "18px 30px", alignSelf: "auto", children: [t({ static: "DEMANDER UN DEVIS →", font: "Inter", weight: 800, size: 22, color: "#ffffff", uppercase: true, nowrap: true })] }),
+        pill({ bg: DECLIC_TRAITEUR_C.accent, padding: "18px 30px", alignSelf: "auto", children: [
+          row({ gap: 16, align: "center", children: [
+            t({ static: "DEMANDER UN DEVIS", font: "Inter", weight: 800, size: 22, color: "#ffffff", uppercase: true, nowrap: true }),
+            { type: "image", file: "arrow-right-declic-traiteur.svg", w: 24, h: 24 }
+          ]})
+        ] }),
         grp({ align: "end", direction: "column", gap: 6, children: [
           t({ static: "+225 05 66 22 10 10", font: "Poppins", weight: 800, size: 22, color: "#ffffff", nowrap: true }),
           t({ static: "Reservations@tera.events", font: "Inter", weight: 600, size: 18, color: DECLIC_TRAITEUR_C.textDim, nowrap: true })
