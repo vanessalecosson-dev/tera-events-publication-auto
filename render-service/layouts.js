@@ -193,17 +193,21 @@ const SAVOIR_FOOTER_LAST = row({ justify: "between", align: "center", children: 
 ]});
 // Pied de slide spécifique à la série Traiteur (GAMME) : hauteur fixe 169px, texte centré
 // verticalement dedans — valeur exacte du fichier Figma pour cette série uniquement.
+const GAMME_ACTION = (label) => row({ gap: 8, align: "center", style: "width:auto;", children: [
+  t({ static: label, font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true }),
+  { type: "image", file: "arrow-right-savoir.svg", w: 24, h: 24 }
+]});
 const GAMME_FOOTER = row({ justify: "between", align: "center", h: 169, children: [
   t({ static: "Traiteur · Décoration · Event Planning", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.accentLight, uppercase: true, nowrap: true, w: 600 }),
-  t({ static: "SUIVANT →", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true, w: 200, align: "right" })
+  GAMME_ACTION("SUIVANT")
 ]});
 const GAMME_FOOTER_179 = row({ justify: "between", align: "center", h: 179, children: [
   t({ static: "Traiteur · Décoration · Event Planning", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.accentLight, uppercase: true, nowrap: true, w: 600 }),
-  t({ static: "SUIVANT →", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true, w: 200, align: "right" })
+  GAMME_ACTION("SUIVANT")
 ]});
 const GAMME_FOOTER_LAST = row({ justify: "between", align: "center", h: 169, children: [
   t({ static: "Traiteur · Décoration · Event Planning", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.accentLight, uppercase: true, nowrap: true, w: 600 }),
-  t({ static: "DERNIER CONSEIL →", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true, w: 280, align: "right" })
+  GAMME_ACTION("DERNIER CONSEIL")
 ]});
 
 layouts["tera-savoirfairemercredi-s1"] = savoirRoot("savoirfaire-mercredi-s1.png", null, [], t({ static: "Le conseil du mercredi", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", uppercase: true, nowrap: true }), [
@@ -335,8 +339,8 @@ const GAMME_HEADER = (dataLine1, dataLine2, dataBadge) => grp({ direction: "colu
     t({ data: dataLine1, font: "Playfair Display", weight: 400, size: 80, color: "#ffffff", align: "center", lineHeight: 0.85, nowrap: true }),
     t({ data: dataLine2, font: "Playfair Display", weight: 700, italic: true, size: 96, color: "#ffffff", align: "center", lineHeight: 0.85, nowrap: true })
   ]}),
-  row({ justify: "center", marginTop: -15, children: [
-    pill({ bg: "#ffffff", rotate: -3, padding: "12px 36px", children: [t({ data: dataBadge, font: "Poppins", weight: 700, size: 28, color: SAVOIR_TRAITEUR_C.badge, align: "center", nowrap: true })] })
+  row({ justify: "center", marginTop: -3, children: [
+    pill({ bg: "#ffffff", rotate: -3, padding: "12px 36px", h: 66, shadow: "0px 8px 8px rgba(0,0,0,0.15)", children: [t({ data: dataBadge, font: "Poppins", weight: 700, size: 28, color: SAVOIR_TRAITEUR_C.badge, align: "center", nowrap: true })] })
   ]})
 ]});
 
