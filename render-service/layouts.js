@@ -183,13 +183,17 @@ function savoirRoot(bg, radial, decorations, headerRight, children, headerGap) {
   };
 }
 
+const SAVOIR_ACTION = (label) => row({ gap: 8, align: "center", style: "width:auto;", children: [
+  t({ static: label, font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true }),
+  { type: "image", file: "arrow-right-savoir.svg", w: 24, h: 24 }
+]});
 const SAVOIR_FOOTER = row({ justify: "between", align: "center", children: [
   t({ static: "Traiteur · Décoration · Event Planning", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.accentLight, uppercase: true, nowrap: true, w: 600 }),
-  t({ static: "SUIVANT →", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true, w: 200, align: "right" })
+  SAVOIR_ACTION("SUIVANT")
 ]});
 const SAVOIR_FOOTER_LAST = row({ justify: "between", align: "center", children: [
   t({ static: "Traiteur · Décoration · Event Planning", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.accentLight, uppercase: true, nowrap: true, w: 600 }),
-  t({ static: "DERNIER CONSEIL →", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", nowrap: true, w: 280, align: "right" })
+  SAVOIR_ACTION("DERNIER CONSEIL")
 ]});
 // Pied de slide spécifique à la série Traiteur (GAMME) : hauteur fixe 169px, texte centré
 // verticalement dedans — valeur exacte du fichier Figma pour cette série uniquement.
@@ -210,18 +214,36 @@ const GAMME_FOOTER_LAST = row({ justify: "between", align: "center", h: 169, chi
   GAMME_ACTION("DERNIER CONSEIL")
 ]});
 
-layouts["tera-savoirfairemercredi-s1"] = savoirRoot("savoirfaire-mercredi-s1.png", null, [], t({ static: "Le conseil du mercredi", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", uppercase: true, nowrap: true }), [
-  row({ gap: 16, align: "center", children: [
-    pill({ bg: SAVOIR.accent, rotate: 3, padding: "8px 18px", children: [t({ static: "C'est", font: "DM Sans", weight: 700, size: 35, color: SAVOIR.bg, nowrap: true })] }),
-    t({ static: "mercredi", font: "Playfair Display", weight: 400, italic: true, size: 35, color: "#ffffff", nowrap: true })
-  ]}),
-  t({ data: "titre", font: "DM Sans", weight: 800, size: 92, color: SAVOIR.text, lineHeight: 0.9, rotate: -1.89, shadow: "0px 5px 18px rgba(0,0,0,0.4)", w: 900 }),
-  row({ gap: 24, align: "center", children: [
-    line(8, 88, SAVOIR.accent, 1),
-    t({ data: "texte", font: "DM Sans", weight: 400, size: 26, color: SAVOIR.textDim, lineHeight: 1.35 })
-  ]}),
-  SAVOIR_FOOTER
-]);
+layouts["tera-savoirfairemercredi-s1"] = {
+  width: 1080, height: 1080,
+  background: "savoirfaire-mercredi-s1.png",
+  bgColor: SAVOIR.bg,
+  photoGradient: { direction: "to bottom", stops: ["rgba(7,26,63,0.1) 0%", "rgba(7,26,63,0.2) 50%", "rgba(7,26,63,0.94) 100%"] },
+  root: grp({ children: [
+    row({ x: 72, y: 54, w: 936, h: 148, justify: "between", align: "center", children: [
+      { type: "image", file: LOGO_FILE, w: 138, h: 148, fit: "cover" },
+      t({ static: "Le conseil du mercredi", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", uppercase: true, nowrap: true })
+    ]}),
+    grp({ x: 72, y: 414, w: 936, direction: "column", gap: 24, children: [
+      row({ gap: 16, align: "center", h: 68, children: [
+        grp({ w: 121, h: 68, direction: "row", justify: "center", align: "center", children: [
+          grp({ direction: "column", style: "width:auto; background:#d59a99; padding:8px 18px; transform:rotate(3deg); overflow:hidden;", children: [
+            t({ static: "C’est", font: "DM Sans", weight: 700, size: 35, color: SAVOIR.bg, nowrap: true })
+          ]})
+        ]}),
+        t({ static: "mercredi", font: "Playfair Display", weight: 400, italic: true, size: 35, color: "#ffffff", nowrap: true })
+      ]}),
+      grp({ h: 328, direction: "row", align: "center", children: [
+        t({ data: "titre", font: "DM Sans", weight: 800, size: 112, color: SAVOIR.text, lineHeight: 0.88, rotate: -1.89, shadow: "0px 5px 18px rgba(0,0,0,0.4)", w: 936 })
+      ]}),
+      row({ gap: 24, align: "center", children: [
+        { type: "line", w: 8, h: 88, color: SAVOIR.accent, opacity: 1, rounded: true },
+        t({ data: "texte", font: "DM Sans", weight: 400, size: 26, color: SAVOIR.textDim, lineHeight: 1.35 })
+      ]}),
+      SAVOIR_FOOTER
+    ]})
+  ]})
+};
 
 layouts["tera-savoirfairemercredi-s2"] = savoirRoot("savoirfaire-mercredi-s2.png", null, [], row({ direction: "column", gap: 8, align: "end", children: [
   t({ static: "Le conseil du mercredi", font: "DM Sans", weight: 700, size: 20, color: "#ffffff", uppercase: true, nowrap: true }),
