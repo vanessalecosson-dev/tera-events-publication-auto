@@ -42,9 +42,9 @@ Les pools de variantes ne contiennent que ce qui est réellement dessiné dans F
 
 `render-service/layouts.js` définit **22 gabarits**, reconstruits depuis le fichier Figma `GABARIT-TERA-EVENTS` (`vZn7iir8VGn5fh8M9tIfXZ`) : positions, polices, couleurs, dégradés, ombres et éléments décoratifs.
 
-Contrairement à La Lignée, **aucune génération de photo par IA** : chaque gabarit a sa photo (ou son dégradé) intégrée directement dans `render-service/backgrounds/`, exportée depuis Figma. La variété vient du nombre de gabarits disponibles, pas d'une photo qui change à chaque publication.
+Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le workflow peut toutefois fournir un champ `background_image` propre à la publication : l'image issue de la banque média TERA remplace alors automatiquement le fond canonique, tout en conservant la composition graphique du gabarit. `background_position` permet d'ajuster le cadrage si nécessaire.
 
-`render-service/server.js` utilise un modèle de champs positionnés librement (pas un empilement de colonnes comme La Lignée) : chaque gabarit déclare un tableau `fields` avec position absolue, police, couleur, et soit `data: "nomDuChamp"` (rempli par Claude) soit `static: "..."` (élément de marque fixe). Testé et validé en local (`PORT=3100 node server.js`), pipeline complet vérifié de bout en bout avec un JSON simulé conforme au schéma.
+`render-service/server.js` utilise des arbres de mise en page composés de groupes, rangées et éléments positionnés. Les propriétés `data` sont remplies par la rédaction automatique ; les propriétés `static` restent fixes. Les compositions, espacements et dimensions proviennent de chaque nœud Figma. Le contrôle `npm test` vérifie les 22 correspondances avec le manifeste Figma et la présence de toutes les ressources locales.
 
 **Limitations actuelles :**
 - Aucun format Story (1080×1920) n'est encore dessiné dans Figma pour ces gabarits — à faire.

@@ -11,7 +11,7 @@ Workflow de production de contenus pour TERA EVENTS : rédaction assistée, gén
 
 ## État actuel
 
-- 22 gabarits carrés 1080 × 1080 intégrés au render-service.
+- 22 gabarits Figma intégrés au render-service : formats 1080 × 1080, 1121 × 1350 et 1226 × 1350 selon le modèle source.
 - Préparation des piliers, prompts, parsing, visuels et validation hebdomadaire disponible.
 - Publication Buffer et régénération préparées sous forme de modules n8n.
 - Workflow n8n, déploiement VPS et connexions sociales encore à réaliser.
@@ -23,6 +23,7 @@ Workflow de production de contenus pour TERA EVENTS : rédaction assistée, gén
 3. Installer Chromium avec `npx playwright install chromium` si nécessaire.
 4. Lancer `npm start` depuis `render-service`.
 5. Vérifier `http://localhost:3100/health`.
+6. Exécuter `npm test` pour contrôler la présence des 22 gabarits, leurs dimensions Figma et leurs ressources graphiques.
 
 Les fichiers `code_*.js` sont destinés aux nœuds Code du workflow n8n. Le détail de l'architecture et des prochaines étapes se trouve dans `DOCUMENTATION.md`.
 
