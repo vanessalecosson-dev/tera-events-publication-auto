@@ -539,41 +539,51 @@ layouts["tera-chiffremercredi-s2"] = {
   ]})
 };
 
-layouts["tera-chiffremercredi-s3"] = chiffreRoot(
-  { cx: 874.38, cy: 337.5, rx: 247, ry: 567, stops: ["rgba(23,54,122,1) 0%", "rgba(14,36,89,1) 50%", "rgba(4,18,56,1) 100%"] },
-  [{ type: "circle", x: -120, y: 1000, w: 320, color: CHIFFRE_C.accent, opacity: 0.1 }],
-  124, [
-    CHIFFRE_HEADER,
-    grp({ direction: "column", gap: 40, children: [
+layouts["tera-chiffremercredi-s3"] = {
+  width: 1121, height: 1350,
+  bgColor: CHIFFRE_C.bg,
+  radialGradient: { cx: 874.38, cy: 337.5, rx: 247, ry: 567, stops: ["rgba(23,54,122,1) 0%", "rgba(14,36,89,1) 50%", "rgba(4,18,56,1) 100%"] },
+  root: grp({ x: 0, y: 0, w: 1121, h: 1350, children: [
+    { type: "image", file: "logo-tera-chiffre.png", x: 491.5, y: 56, w: 138, h: 119, fit: "cover" },
+    t({ data: "edition_label", x: 76, y: 220, w: 969, font: "Poppins", weight: 700, size: 24, color: CHIFFRE_C.accent, uppercase: true, nowrap: true }),
+    { type: "line", x: 76, y: 265, w: 969, h: 2, color: "#65d7fa", opacity: 0.85 },
+    grp({ x: 76, y: 394, w: 969, direction: "column", gap: 40, children: [
       t({ data: "surtitre", font: "Playfair Display", weight: 400, italic: true, size: 35, color: CHIFFRE_C.cyan, nowrap: true }),
-      t({ data: "titre", font: "Poppins", weight: 800, size: 56, color: "#ffffff", lineHeight: 1.02 }),
+      t({ data: "titre", w: 969, font: "Poppins", weight: 800, size: 58, color: "#ffffff", lineHeight: 1.02, nowrap: true }),
       grp({ direction: "column", gap: 32, children: [
-        row({ gap: 16, align: "center", children: [
+        row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "1", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ direction: "column", gap: 8, children: [
-            t({ data: "conseil1_titre", font: "Poppins", weight: 700, size: 34, color: "#ffffff" }),
-            t({ data: "conseil1_texte", font: "Poppins", weight: 400, size: 24, color: CHIFFRE_C.textDim, lineHeight: 1.4 })
+          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil1_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
+            t({ data: "conseil1_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
           ]})
         ]}),
-        row({ gap: 16, align: "center", children: [
+        row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "2", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ direction: "column", gap: 8, children: [
-            t({ data: "conseil2_titre", font: "Poppins", weight: 700, size: 34, color: "#ffffff" }),
-            t({ data: "conseil2_texte", font: "Poppins", weight: 400, size: 24, color: CHIFFRE_C.textDim, lineHeight: 1.4 })
+          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil2_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
+            t({ data: "conseil2_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
           ]})
         ]}),
-        row({ gap: 16, align: "center", children: [
+        row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "3", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ direction: "column", gap: 8, children: [
-            t({ data: "conseil3_titre", font: "Poppins", weight: 700, size: 34, color: "#ffffff" }),
-            t({ data: "conseil3_texte", font: "Poppins", weight: 400, size: 24, color: CHIFFRE_C.textDim, lineHeight: 1.4 })
+          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil3_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
+            t({ data: "conseil3_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
           ]})
         ]})
       ]})
     ]}),
-    chiffreFooter("03 / 05 →")
-  ]
-);
+    { type: "image", file: "chiffre-halo.svg", x: -120, y: 1000, w: 320, h: 320 },
+    { type: "outlinePill", x: 76, y: 1215, border: CHIFFRE_C.textDim, padding: "11px 24px", children: [
+      t({ static: "www.tera.events", font: "Poppins", weight: 400, size: 25, color: "#ffffff", nowrap: true })
+    ]},
+    grp({ x: 694, y: 1215, w: 310, direction: "column", align: "end", gap: 8, children: [
+      t({ static: "Glissez pour continuer", w: 311, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, uppercase: true }),
+      t({ static: "03 / 05  →", w: 140, font: "Playfair Display", weight: 400, italic: true, size: 25, color: CHIFFRE_C.cyan, align: "right", nowrap: true })
+    ]})
+  ]})
+};
 
 layouts["tera-chiffremercredi-s4"] = chiffreRoot(
   { cx: 874.38, cy: 337.5, rx: 247, ry: 567, stops: ["rgba(23,54,122,1) 0%", "rgba(14,36,89,1) 50%", "rgba(4,18,56,1) 100%"] },

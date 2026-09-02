@@ -131,7 +131,7 @@ const SCHEMAS = {
   "slides": [
     { "chiffre": "Le chiffre en gros caractères, ex. '48' (nombre seul, sans unité)", "unite": "L'unité en 1 mot, ex. 'heures'", "headline": "Ce que ce chiffre permet (8-12 mots)", "insight": "1 phrase qui explique pourquoi ça compte (12-20 mots)" },
     { "surtitre": "3-5 mots MAJUSCULES", "statistique": "Reformulation courte du même chiffre ou d'un angle complémentaire", "cartouche": "2-4 mots, un label court", "titre": "Titre développé (8-14 mots)", "texte": "1-2 phrases (20-30 mots)" },
-    { "repere": "3-5 mots MAJUSCULES", "titre": "Titre (8-12 mots)", "conseil1": "1 principe concret (15-25 mots)", "conseil2": "1 principe concret (15-25 mots)", "conseil3": "1 principe concret (15-25 mots)" },
+    { "surtitre": "Une formule courte en 4-7 mots", "titre": "Titre (5-9 mots)", "conseil1_titre": "Question courte", "conseil1_texte": "1 principe concret (8-15 mots)", "conseil2_titre": "Question courte", "conseil2_texte": "1 principe concret (8-15 mots)", "conseil3_titre": "Question courte", "conseil3_texte": "1 principe concret (8-15 mots)" },
     { "repere": "3-5 mots MAJUSCULES", "titre": "Titre (8-12 mots)", "detail1": "1 point pratique (12-20 mots)", "detail2": "1 point pratique (12-20 mots)", "detail3": "1 point pratique (12-20 mots)", "conclusion": "1 phrase de clôture (10-15 mots)" },
     { "badge": "1-2 mots", "titre": "Titre de conclusion (8-12 mots)", "texte": "1 phrase (15-25 mots)", "cta_question": "Question courte (5-8 mots)", "cta_action": "2-3 mots MAJUSCULES" }
   ],
