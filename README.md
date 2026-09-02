@@ -14,7 +14,7 @@ Workflow de production de contenus pour TERA EVENTS : rédaction assistée, gén
 - 22 gabarits Figma intégrés au render-service : formats 1080 × 1080, 1121 × 1350 et 1226 × 1350 selon le modèle source.
 - Préparation des piliers, prompts, parsing, visuels et validation hebdomadaire disponible.
 - Publication Buffer et régénération préparées sous forme de modules n8n.
-- Export du workflow n8n disponible et désactivé par défaut ; déploiement VPS et connexions externes encore à finaliser.
+- Workflow n8n créé et désactivé (`wrq6FhVvULDUuUUp`) ; moteur graphique déployé sur le VPS avec 22 gabarits ; e-mail de validation et canaux Buffer encore à renseigner.
 
 ## Démarrage local du render-service
 

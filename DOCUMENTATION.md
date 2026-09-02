@@ -7,10 +7,10 @@ Documentation du projet, en cours de construction. Projet indépendant de `la-li
 TERA EVENTS publie 3 fois par semaine (lundi, mercredi, vendredi) sur Facebook, Instagram et LinkedIn, chaque créneau ayant un angle fixe. Le week-end reste au geste spontané de l'agence (réalisations, reels), hors de ce pipeline.
 
 **Composants prévus :**
-- **n8n** — même instance que La Lignée, nouveau workflow indépendant, pas encore créé.
+- **n8n** — même instance que La Lignée, workflow indépendant `TERA EVENTS - Publication Hebdomadaire` (`wrq6FhVvULDUuUUp`), créé avec 25 nœuds et maintenu désactivé pendant la configuration.
 - **Claude (Anthropic API)** — rédaction dynamique des textes selon le sujet, sans recherche web (le contenu porte sur les services propres de TERA, pas des statistiques externes).
 - **Gemini Image** — génération des photos de fond contextuelles pour les gabarits photographiques. Aucun texte, logo ni élément de composition n'est généré dans l'image ; la charte reste appliquée par Figma et le render-service.
-- **`render-service`** — service Node.js/Playwright, code déjà écrit et testé localement (`render-service/`), pas encore déployé sur le VPS. Doit tourner dans son propre conteneur Docker (`tera-render`), séparé de `la-lignee-render`.
+- **`render-service`** — service Node.js/Playwright déployé dans le conteneur Docker séparé `tera-render`. n8n le joint sur `http://tera-render:3000` et les images destinées aux réseaux sont servies par `https://tera-visuels.srv1896382.hstgr.cloud`.
 - **Buffer** — module de préparation présent, mais connexion et identifiants de canaux encore manquants.
 
 ## 2. Les 3 créneaux et leurs familles de gabarits
@@ -53,11 +53,11 @@ Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le
 
 ## 5. Prochaines étapes
 
-1. Déployer `render-service` sur le VPS existant dans un conteneur `tera-render` séparé.
-2. Importer `workflow-tera-events.json` dans n8n et conserver le workflow désactivé pendant la revue.
-3. Associer les credentials Anthropic, Gemini, e-mail, render-service et Buffer, puis renseigner les identifiants de canaux dans l'environnement n8n.
-4. Tester le parcours génération → rendu → validation → régénération éventuelle → programmation.
-5. Maquetter les variantes Décoration, Salle et les formats Story.
+1. Renseigner `TERA_VALIDATION_EMAIL` et associer le credential d'envoi correspondant dans n8n.
+2. Connecter les pages TERA au compte Buffer existant et renseigner les trois identifiants de canaux.
+3. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
+4. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
+5. Maquetter les formats Story complémentaires dans Figma.
 
 ## 6. Accès & identifiants
 
