@@ -74,7 +74,8 @@ function renderNode(n, data) {
     // d'accent + texte...), d'où min-width:0 qui lève la limite par défaut de flexbox.
     const flex = n.nowrap ? "flex-shrink:0;" : "flex:1 1 0%; min-width:0;";
     const underline = n.underline ? "text-decoration:underline;" : "";
-    return `<div style="font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${flex}">${escapeHtml(text)}</div>`;
+    const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
+    return `<div style="${position} font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${flex}">${escapeHtml(text)}</div>`;
   }
 
   // Titre bicolore : le début en couleur normale, la fin en italique/couleur accent — reproduit
@@ -100,7 +101,8 @@ function renderNode(n, data) {
   }
 
   if (n.type === "line") {
-    return `<div style="width:${n.w}px; height:${n.h || 2}px; background:${n.color}; opacity:${n.opacity !== undefined ? n.opacity : 1}; border-radius:${n.rounded ? "999px" : "0"}; flex-shrink:0;"></div>`;
+    const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
+    return `<div style="${position} width:${n.w}px; height:${n.h || 2}px; background:${n.color}; opacity:${n.opacity !== undefined ? n.opacity : 1}; border-radius:${n.rounded ? "999px" : "0"}; flex-shrink:0;"></div>`;
   }
 
   if (n.type === "circleBadge") {
@@ -115,7 +117,8 @@ function renderNode(n, data) {
     const h = n.h ? `height:${n.h}px;` : "";
     const shadow = n.shadow ? `box-shadow:${n.shadow};` : "";
     const inner = (n.children || []).map(c => renderNode(c, data)).join("");
-    return `<div style="display:inline-flex; ${bg} ${w} ${h} ${shadow} border-radius:999px; padding:${n.padding || "10px 22px"}; ${rotate} align-items:center; justify-content:center; flex-shrink:0; align-self:${n.alignSelf || "flex-start"};">${inner}</div>`;
+    const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
+    return `<div style="${position} display:inline-flex; ${bg} ${w} ${h} ${shadow} border-radius:999px; padding:${n.padding || "10px 22px"}; ${rotate} align-items:center; justify-content:center; flex-shrink:0; align-self:${n.alignSelf || "flex-start"};">${inner}</div>`;
   }
 
   if (n.type === "bar") {
@@ -160,6 +163,9 @@ function renderNode(n, data) {
 }
 
 function decorationHtml(d) {
+  if (d.type === "image") {
+    return `<img src="${loadFile(d.file)}" style="position:absolute; left:${d.x}px; top:${d.y}px; width:${d.w}px; height:${d.h}px; object-fit:${d.fit || "contain"};" />`;
+  }
   if (d.type === "line") {
     return `<div style="position:absolute; left:${d.x}px; top:${d.y}px; width:${d.w}px; height:2px; background:${d.color}; opacity:${d.opacity !== undefined ? d.opacity : 1};"></div>`;
   }
