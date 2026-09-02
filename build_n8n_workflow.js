@@ -6,8 +6,8 @@ const code = file => fs.readFileSync(path.join(root, file), "utf8");
 const nodes = [];
 const connections = {};
 
-function add(name, type, position, parameters, typeVersion = 2) {
-  nodes.push({ name, type, typeVersion, position, parameters });
+function add(name, type, position, parameters, typeVersion = 2, nodeOptions = {}) {
+  nodes.push({ name, type, typeVersion, position, parameters, ...nodeOptions });
 }
 function connect(from, to, output = 0) {
   if (!connections[from]) connections[from] = { main: [] };
@@ -29,7 +29,7 @@ add("Générer le contenu (Claude)", "n8n-nodes-base.httpRequest", [720, 0], { m
 codeNode("Parser Réponse Claude", [960, 0], "code_parse_response.js", "runOnceForEachItem");
 add("Fond IA requis ?", "n8n-nodes-base.if", [1200, 0], { conditions: { options: { caseSensitive: true, typeValidation: "strict" }, conditions: [{ id: "fond-ia", leftValue: "={{ !($json.famille === 'savoirfaire' && $json.variante === 'chiffre') }}", rightValue: true, operator: { type: "boolean", operation: "true", singleValue: true } }], combinator: "and" }, options: {} }, 2.2);
 codeNode("Préparer Photo de Fond IA", [1440, -160], "code_prepare_image_generation.js", "runOnceForEachItem");
-add("Générer Photo de Fond", "n8n-nodes-base.httpRequest", [1680, -160], { method: "POST", url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent", authentication: "genericCredentialType", genericAuthType: "httpHeaderAuth", sendBody: true, specifyBody: "json", jsonBody: "={{ JSON.stringify($json.gemini_request) }}", options: { timeout: 600000 } }, 4.2);
+add("Générer Photo de Fond", "n8n-nodes-base.httpRequest", [1680, -160], { method: "POST", url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent", authentication: "genericCredentialType", genericAuthType: "httpHeaderAuth", sendBody: true, specifyBody: "json", jsonBody: "={{ JSON.stringify($json.gemini_request) }}", options: { timeout: 600000 } }, 4.2, { retryOnFail: true, maxTries: 5, waitBetweenTries: 15000 });
 codeNode("Associer Photo Générée", [1920, -160], "code_attach_generated_background.js", "runOnceForEachItem");
 add("Fusionner Contenus", "n8n-nodes-base.merge", [2160, 0], { mode: "append", numberInputs: 2 }, 3.2);
 codeNode("Préparer Requêtes Visuel", [2400, 0], "code_prepare_visuals.js");

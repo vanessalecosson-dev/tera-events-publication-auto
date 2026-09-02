@@ -165,7 +165,10 @@
         "options": {
           "timeout": 600000
         }
-      }
+      },
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 15000
     },
     {
       "name": "Associer Photo Générée",
