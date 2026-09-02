@@ -275,8 +275,8 @@ layouts["tera-savoirfairemercredi-s3"] = savoirRoot(null, {
         direction: "column", gap: 40,
         children: [
           grp({ direction: "column", gap: 16, children: [
-            t({ data: "repere", font: "Playfair Display", weight: 400, italic: true, size: 30, color: SAVOIR.accentLight, nowrap: true }),
-            t({ data: "titre", font: "DM Sans", weight: 800, size: 56, color: SAVOIR.text, lineHeight: 0.95 })
+            t({ data: "repere", font: "Playfair Display", weight: 400, italic: true, size: 36, color: SAVOIR.accentLight, nowrap: true }),
+            t({ data: "titre", font: "DM Sans", weight: 800, size: 74, color: SAVOIR.text, lineHeight: 0.95 })
           ]}),
           grp({
             direction: "column", gap: 16,
@@ -284,30 +284,30 @@ layouts["tera-savoirfairemercredi-s3"] = savoirRoot(null, {
               grp({ direction: "column", children: [
                 line(936, 1, "rgba(213,154,153,0.5)"),
                 row({ gap: 24, align: "center", padding: "18px 0", children: [
-                  t({ data: "moment1_horaire", font: "Playfair Display", weight: 400, italic: true, size: 26, color: SAVOIR.accent, w: 110, nowrap: true }),
+                  t({ data: "moment1_horaire", font: "Playfair Display", weight: 400, italic: true, size: 30, color: SAVOIR.accent, w: 120, nowrap: true }),
                   grp({ direction: "column", gap: 4, children: [
-                    t({ data: "moment1_titre", font: "DM Sans", weight: 700, size: 24, color: "#ffffff", nowrap: true }),
-                    t({ data: "moment1_texte", font: "DM Sans", weight: 400, size: 18, color: SAVOIR.accentLight })
+                    t({ data: "moment1_titre", font: "DM Sans", weight: 700, size: 28, color: "#ffffff", nowrap: true }),
+                    t({ data: "moment1_texte", font: "DM Sans", weight: 400, size: 20, color: SAVOIR.accentLight })
                   ]})
                 ]})
               ]}),
               grp({ direction: "column", children: [
                 line(936, 1, "rgba(213,154,153,0.5)"),
                 row({ gap: 24, align: "center", padding: "18px 0", children: [
-                  t({ data: "moment2_horaire", font: "Playfair Display", weight: 400, italic: true, size: 26, color: SAVOIR.accent, w: 110, nowrap: true }),
+                  t({ data: "moment2_horaire", font: "Playfair Display", weight: 400, italic: true, size: 30, color: SAVOIR.accent, w: 120, nowrap: true }),
                   grp({ direction: "column", gap: 4, children: [
-                    t({ data: "moment2_titre", font: "DM Sans", weight: 700, size: 24, color: "#ffffff", nowrap: true }),
-                    t({ data: "moment2_texte", font: "DM Sans", weight: 400, size: 18, color: SAVOIR.accentLight })
+                    t({ data: "moment2_titre", font: "DM Sans", weight: 700, size: 28, color: "#ffffff", nowrap: true }),
+                    t({ data: "moment2_texte", font: "DM Sans", weight: 400, size: 20, color: SAVOIR.accentLight })
                   ]})
                 ]})
               ]}),
               grp({ direction: "column", children: [
                 line(936, 1, "rgba(213,154,153,0.5)"),
                 row({ gap: 24, align: "center", padding: "18px 0", children: [
-                  t({ data: "moment3_horaire", font: "Playfair Display", weight: 400, italic: true, size: 26, color: SAVOIR.accent, w: 110, nowrap: true }),
+                  t({ data: "moment3_horaire", font: "Playfair Display", weight: 400, italic: true, size: 30, color: SAVOIR.accent, w: 120, nowrap: true }),
                   grp({ direction: "column", gap: 4, children: [
-                    t({ data: "moment3_titre", font: "DM Sans", weight: 700, size: 24, color: "#ffffff", nowrap: true }),
-                    t({ data: "moment3_texte", font: "DM Sans", weight: 400, size: 18, color: SAVOIR.accentLight })
+                    t({ data: "moment3_titre", font: "DM Sans", weight: 700, size: 28, color: "#ffffff", nowrap: true }),
+                    t({ data: "moment3_texte", font: "DM Sans", weight: 400, size: 20, color: SAVOIR.accentLight })
                   ]})
                 ]})
               ]})
