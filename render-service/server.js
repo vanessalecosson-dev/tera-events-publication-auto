@@ -95,7 +95,8 @@ function renderNode(n, data) {
   }
 
   if (n.type === "image") {
-    return `<img src="${loadFile(n.file)}" style="width:${n.w}px; height:${n.h}px; object-fit:${n.fit || "contain"}; flex-shrink:0;" />`;
+    const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
+    return `<img src="${loadFile(n.file)}" style="${position} width:${n.w}px; height:${n.h}px; object-fit:${n.fit || "contain"}; flex-shrink:0;" />`;
   }
 
   if (n.type === "line") {
