@@ -218,7 +218,7 @@
       ],
       "parameters": {
         "method": "POST",
-        "url": "={{ ($env.TERA_RENDER_BASE_URL || 'http://tera-render:3000') + '/render/' + $json.template }}",
+        "url": "={{ ($env.TERA_RENDER_BASE_URL || 'https://tera-visuels.srv1896382.hstgr.cloud') + '/render/' + $json.template }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -227,7 +227,10 @@
         "options": {
           "timeout": 120000
         }
-      }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
     },
     {
       "name": "Associer les Visuels",
