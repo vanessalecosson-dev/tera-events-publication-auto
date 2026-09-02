@@ -53,6 +53,7 @@ const STATIC_FIELDS = {
 
 function buildVisualRequests(d) {
   const key = `${d.famille}:${d.variante}`;
+  const isChiffreDuMercredi = key === "savoirfaire:chiffre";
   const templates = TEMPLATE_MAP[key];
   if (!templates) {
     throw new Error(`Aucun gabarit défini pour famille="${d.famille}" variante="${d.variante}".`);
@@ -69,8 +70,12 @@ function buildVisualRequests(d) {
     // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.
     // Une image propre à la slide est prioritaire, puis celle de la liste du carrousel, puis le
     // fond commun de la publication. Sans image fournie, le fond Figma canonique reste le fallback.
-    const backgroundImage = slideFields.background_image || backgroundImages[idx] || d.background_image;
-    const backgroundPosition = slideFields.background_position || d.background_position;
+    const backgroundImage = isChiffreDuMercredi
+      ? undefined
+      : (slideFields.background_image || backgroundImages[idx] || d.background_image);
+    const backgroundPosition = isChiffreDuMercredi
+      ? undefined
+      : (slideFields.background_position || d.background_position);
     return {
       json: {
         post_id: postId,

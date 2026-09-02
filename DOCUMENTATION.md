@@ -68,6 +68,19 @@ Le collecteur hebdomadaire attend les trois jours et toutes leurs slides avant d
 e-mail de validation. Aucun nom ou prénom de membre de l'équipe n'est autorisé dans les contenus ;
 un contrôle bloque notamment toute occurrence des membres connus avant la création des visuels.
 
+La variante `savoirfaire:chiffre` est toujours rendue comme un carrousel graphique de cinq slides.
+Elle n'accepte aucune photo de fond, y compris lorsqu'une image est produite ou transmise par erreur
+en amont. Les deux garde-fous du workflow retirent et ignorent systématiquement ce champ.
+
+La marque est toujours désignée par `TERA EVENTS`. La mention `Centre Commercial TERA` est réservée
+à une indication explicite de localisation et ne peut jamais remplacer le nom de l'entreprise. Les
+légendes sont produites sous forme de deux à quatre paragraphes courts et aérés ; les hashtags sont
+normalisés avec leur préfixe `#` avant la validation.
+
+Chaque légende reçoit automatiquement un bloc de contact non modifiable : WhatsApp ou appel au
+`+225 05 66 22 10 10`, puis `reservations@tera.events`. Ces coordonnées ne sont jamais laissées à
+la génération libre du modèle.
+
 1. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
 2. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
 3. Maquetter les formats Story complémentaires dans Figma.

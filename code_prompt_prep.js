@@ -61,6 +61,19 @@ RIGUEUR FACTUELLE :
   non comme un prix moyen du marché ou une recommandation générale.
 - Ne cite jamais le prénom, le nom ou la fonction nominative d'un membre de l'équipe. Utilise
   uniquement « notre équipe », « nos chefs », « nos serveurs » ou « notre équipe de coordination ».
+- La marque et l'entreprise s'appellent toujours « TERA EVENTS ». N'utilise jamais « Centre
+  Commercial TERA » pour désigner l'entreprise, l'équipe ou le service traiteur. Cette expression
+  est réservée exclusivement à une indication de localisation explicite.
+
+STRUCTURE DES LÉGENDES :
+- Même courte, chaque légende doit être rédigée en 2 à 4 paragraphes aérés, séparés par une ligne
+  vide. Pas de bloc compact ni de suite de phrases posées les unes à la suite des autres.
+- Le premier paragraphe donne envie de poursuivre. Le deuxième apporte une information concrète.
+- Le dernier conduit naturellement vers une demande de devis, une question ou une prise de contact.
+- Les coordonnées exactes sont ajoutées automatiquement après la rédaction. Ne les invente pas et
+  ne les reformule pas dans le corps de la légende.
+- Les transitions doivent sembler naturelles et conversationnelles, sans titres artificiels tels
+  que « Introduction », « Conseil » ou « Conclusion ».
 
 TON DE MARQUE :
 - Chaleureux, précis, sensoriel (matières, lumière, ambiance) plutôt que des superlatifs vides.
@@ -130,7 +143,7 @@ const SCHEMAS = {
   },
 
   "savoirfaire:chiffre": {
-    angle: "Le chiffre du mercredi : un carrousel fixe de 5 slides construit autour d'UN SEUL chiffre ou délai réel de TERA (jamais une statistique externe non vérifiée) : accroche chiffrée, développement, 3 principes numérotés, 3 points pratiques, conclusion + question.",
+    angle: "Le chiffre du mercredi : un carrousel fixe de 5 slides, toujours 100 % graphique et sans photo de fond, construit autour d'UN SEUL chiffre ou délai réel de TERA (jamais une statistique externe non vérifiée) : accroche chiffrée, développement, 3 principes numérotés, 3 points pratiques, conclusion + question.",
     schema: `{
   "slides": [
     { "chiffre": "Le chiffre en gros caractères, ex. '48' (nombre seul, sans unité)", "unite": "L'unité en 1 mot, ex. 'heures'", "headline": "Ce que ce chiffre permet (8-12 mots)", "insight": "1 phrase qui explique pourquoi ça compte (12-20 mots)" },

@@ -34,6 +34,35 @@ if (detectedPerson) {
   throw new Error("Le contenu généré cite un membre de l'équipe. Une nouvelle rédaction non nominative est requise.");
 }
 
+if (/centre commercial tera/iu.test(publicationText)) {
+  throw new Error("Le contenu généré utilise Centre Commercial TERA comme une marque. La publication doit parler de TERA EVENTS.");
+}
+
+// Rend les légendes agréables à lire même lorsque le modèle oublie les sauts de paragraphe.
+if (typeof parsed.caption === "string") {
+  parsed.caption = parsed.caption.trim();
+  if (!/\n\s*\n/u.test(parsed.caption)) {
+    const sentences = parsed.caption.match(/[^.!?]+[.!?]+|[^.!?]+$/gu)?.map(s => s.trim()).filter(Boolean) || [];
+    if (sentences.length >= 2) {
+      const splitAt = Math.ceil(sentences.length / 2);
+      parsed.caption = [sentences.slice(0, splitAt).join(" "), sentences.slice(splitAt).join(" ")]
+        .filter(Boolean)
+        .join("\n\n");
+    }
+  }
+
+  const contactBlock = "WhatsApp ou appel : +225 05 66 22 10 10\nE-mail : reservations@tera.events";
+  if (!parsed.caption.includes("+225 05 66 22 10 10")) {
+    parsed.caption = `${parsed.caption}\n\n${contactBlock}`;
+  }
+}
+
+if (Array.isArray(parsed.hashtags)) {
+  parsed.hashtags = parsed.hashtags
+    .map(tag => `#${String(tag).trim().replace(/^#+/u, "").replace(/\s+/gu, "")}`)
+    .filter(tag => tag.length > 1);
+}
+
 const source = $("Préparer le Prompt Claude").item.json;
 
 return {

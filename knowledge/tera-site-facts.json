@@ -7,7 +7,12 @@
     "location": "Centre Commercial TERA, Cocody 2 Plateaux, 7ème tranche, Abidjan, Côte d'Ivoire",
     "phone_primary": "+225 05 66 22 10 10",
     "phone_secondary": "+225 07 06 83 99 57",
-    "email": "reservations@tera.events"
+    "email": "reservations@tera.events",
+    "publication_contact": {
+      "phone": "+225 05 66 22 10 10",
+      "phone_channels": ["WhatsApp", "appel"],
+      "email": "reservations@tera.events"
+    }
   },
   "proof_points": {
     "years_experience": "4+",
@@ -50,9 +55,12 @@
     "capacity_publication_rule": "Les pages du site affichent des capacités différentes selon la configuration. Ne publier aucun chiffre de capacité sans validation humaine explicite."
   },
   "publication_rules": [
+    "La marque et l'entreprise doivent toujours être appelées TERA EVENTS.",
+    "Centre Commercial TERA ne peut être mentionné que pour indiquer explicitement la localisation de TERA EVENTS.",
     "Ne jamais citer le nom ou le prénom d'un membre de l'équipe.",
     "Parler de notre équipe, nos chefs, nos serveurs ou notre équipe de coordination.",
     "Ne jamais reprendre les noms présents dans les témoignages.",
+    "Chaque légende doit se terminer par le contact WhatsApp ou appel +225 05 66 22 10 10 et l'adresse reservations@tera.events.",
     "Ne pas inventer de prix, délai, capacité, équipement ou prestation.",
     "Pour le traiteur, le catalogue PDF structuré est prioritaire sur le site."
   ]
