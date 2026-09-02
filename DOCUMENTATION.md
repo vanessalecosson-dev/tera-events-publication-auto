@@ -55,11 +55,16 @@ Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le
 
 L'adresse de validation configurée est `cabinetlalignee@gmail.com`, avec le credential Gmail SMTP déjà opérationnel dans n8n.
 
-1. Connecter les pages TERA au compte Buffer existant et renseigner les trois identifiants de canaux.
-2. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
-3. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
-4. Maquetter les formats Story complémentaires dans Figma.
+1. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
+2. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
+3. Maquetter les formats Story complémentaires dans Figma.
 
 ## 6. Accès & identifiants
 
-Les noms de variables attendues sont documentés dans `.env.example`. Le fichier `.env` local est ignoré par Git et ne doit jamais contenir de valeur destinée au dépôt. Aucun identifiant Buffer TERA n'est renseigné pour l'instant.
+Les noms de variables attendues sont documentés dans `.env.example`. Le fichier `.env` local est ignoré par Git et ne doit jamais contenir de valeur destinée au dépôt.
+
+Les trois canaux Buffer TERA sont configurés dans l'environnement local et dans l'environnement n8n :
+
+- Facebook : `6a982d93065799be4673b410`
+- Instagram : `6a982dc0065799be4673b59e`
+- LinkedIn : `6a982ded065799be4673b71c`
