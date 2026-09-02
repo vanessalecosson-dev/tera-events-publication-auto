@@ -261,8 +261,8 @@
       ],
       "parameters": {
         "operation": "sendAndWait",
-        "fromEmail": "={{ $env.TERA_VALIDATION_EMAIL }}",
-        "toEmail": "={{ $env.TERA_VALIDATION_EMAIL }}",
+        "fromEmail": "cabinetlalignee@gmail.com",
+        "toEmail": "cabinetlalignee@gmail.com",
         "subject": "TERA EVENTS - Validation hebdomadaire",
         "message": "Voici les trois publications proposées. Validez, modifiez ou refusez chaque contenu.",
         "responseType": "customForm",

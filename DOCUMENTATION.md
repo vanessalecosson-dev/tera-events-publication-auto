@@ -53,11 +53,12 @@ Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le
 
 ## 5. Prochaines étapes
 
-1. Renseigner `TERA_VALIDATION_EMAIL` et associer le credential d'envoi correspondant dans n8n.
-2. Connecter les pages TERA au compte Buffer existant et renseigner les trois identifiants de canaux.
-3. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
-4. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
-5. Maquetter les formats Story complémentaires dans Figma.
+L'adresse de validation configurée est `cabinetlalignee@gmail.com`, avec le credential Gmail SMTP déjà opérationnel dans n8n.
+
+1. Connecter les pages TERA au compte Buffer existant et renseigner les trois identifiants de canaux.
+2. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
+3. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
+4. Maquetter les formats Story complémentaires dans Figma.
 
 ## 6. Accès & identifiants
 
