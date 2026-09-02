@@ -6,8 +6,6 @@
 // IMPORTANT : les noms de champs ci-dessous doivent correspondre exactement à ceux attendus par
 // render-service/layouts.js. Toute évolution d'un gabarit doit être répercutée aux deux endroits.
 
-const d = $json;
-
 const TEMPLATE_MAP = {
   "declic:traiteur": ["tera-declic-traiteur"],
   "declic:eventplanning": [
@@ -53,44 +51,46 @@ const STATIC_FIELDS = {
   "ancrage:b": { tag: "L'ANCRAGE DU VENDREDI", cta_label: "Demander un devis →" }
 };
 
-const key = `${d.famille}:${d.variante}`;
-const templates = TEMPLATE_MAP[key];
-if (!templates) {
-  throw new Error(`Aucun gabarit défini pour famille="${d.famille}" variante="${d.variante}".`);
+function buildVisualRequests(d) {
+  const key = `${d.famille}:${d.variante}`;
+  const templates = TEMPLATE_MAP[key];
+  if (!templates) {
+    throw new Error(`Aucun gabarit défini pour famille="${d.famille}" variante="${d.variante}".`);
+  }
+
+  const slides = Array.isArray(d.slides) ? d.slides : [];
+  const hashtagsText = Array.isArray(d.hashtags) ? d.hashtags.join(" ") : (d.hashtags || "");
+  const caption = [d.caption, hashtagsText].filter(Boolean).join("\n\n");
+  const postId = $execution.id + "-" + d.jour;
+  const backgroundImages = Array.isArray(d.background_images) ? d.background_images : [];
+
+  return templates.map((template, idx) => {
+    const slideFields = slides[idx] || {};
+    // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.
+    // Une image propre à la slide est prioritaire, puis celle de la liste du carrousel, puis le
+    // fond commun de la publication. Sans image fournie, le fond Figma canonique reste le fallback.
+    const backgroundImage = slideFields.background_image || backgroundImages[idx] || d.background_image;
+    const backgroundPosition = slideFields.background_position || d.background_position;
+    return {
+      json: {
+        post_id: postId,
+        jour: d.jour,
+        famille: d.famille,
+        variante: d.variante,
+        template,
+        slide_index: idx + 1,
+        slide_count: templates.length,
+        target_due_at: d.target_due_at,
+        render_body: {
+          ...STATIC_FIELDS[key],
+          ...slideFields,
+          ...(backgroundImage ? { background_image: backgroundImage } : {}),
+          ...(backgroundPosition ? { background_position: backgroundPosition } : {})
+        },
+        caption
+      }
+    };
+  });
 }
 
-const slides = Array.isArray(d.slides) ? d.slides : [];
-const hashtagsText = Array.isArray(d.hashtags) ? d.hashtags.join(" ") : (d.hashtags || "");
-const caption = [d.caption, hashtagsText].filter(Boolean).join("\n\n");
-const postId = $execution.id + "-" + d.jour;
-const backgroundImages = Array.isArray(d.background_images) ? d.background_images : [];
-
-const results = templates.map((template, idx) => {
-  const slideFields = slides[idx] || {};
-  // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.
-  // Une image propre à la slide est prioritaire, puis celle de la liste du carrousel, puis le
-  // fond commun de la publication. Sans image fournie, le fond Figma canonique reste le fallback.
-  const backgroundImage = slideFields.background_image || backgroundImages[idx] || d.background_image;
-  const backgroundPosition = slideFields.background_position || d.background_position;
-  return {
-    json: {
-      post_id: postId,
-      jour: d.jour,
-      famille: d.famille,
-      variante: d.variante,
-      template,
-      slide_index: idx + 1,
-      slide_count: templates.length,
-      target_due_at: d.target_due_at,
-      render_body: {
-        ...STATIC_FIELDS[key],
-        ...slideFields,
-        ...(backgroundImage ? { background_image: backgroundImage } : {}),
-        ...(backgroundPosition ? { background_position: backgroundPosition } : {})
-      },
-      caption
-    }
-  };
-});
-
-return results;
+return $input.all().flatMap(item => buildVisualRequests(item.json));
