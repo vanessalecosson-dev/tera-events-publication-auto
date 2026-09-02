@@ -133,7 +133,7 @@ const SCHEMAS = {
     { "surtitre": "3-5 mots MAJUSCULES", "statistique": "Reformulation courte du même chiffre ou d'un angle complémentaire", "cartouche": "2-4 mots, un label court", "titre": "Titre développé (8-14 mots)", "texte": "1-2 phrases (20-30 mots)" },
     { "surtitre": "Une formule courte en 4-7 mots", "titre": "Titre (5-9 mots)", "conseil1_titre": "Question courte", "conseil1_texte": "1 principe concret (8-15 mots)", "conseil2_titre": "Question courte", "conseil2_texte": "1 principe concret (8-15 mots)", "conseil3_titre": "Question courte", "conseil3_texte": "1 principe concret (8-15 mots)" },
     { "surtitre": "Une formule courte en 4-7 mots", "titre": "Titre (5-9 mots)", "detail1": "1 point pratique court (5-9 mots)", "detail2": "1 point pratique court (5-9 mots)", "detail3": "1 point pratique court (5-9 mots)", "conclusion": "1 phrase de clôture courte (6-10 mots)" },
-    { "badge": "1-2 mots", "titre": "Titre de conclusion (8-12 mots)", "texte": "1 phrase (15-25 mots)", "cta_question": "Question courte (5-8 mots)", "cta_action": "2-3 mots MAJUSCULES" }
+    { "badge": "1-2 mots", "titre": "Titre de conclusion (8-12 mots)", "texte": "1 phrase (15-25 mots)", "cta_question": "Question courte (3-6 mots)", "cta_action": "2-3 mots MAJUSCULES avec une flèche finale" }
   ],
   "caption": "Légende complète du post (300-450 caractères)",
   "hashtags": ["5 à 8 hashtags", "mélange marque/local/expertise"]
