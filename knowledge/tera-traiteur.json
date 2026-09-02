@@ -1,0 +1,123 @@
+{
+  "version": "Saison 26",
+  "currency": "F CFA",
+  "minimum_guests": 30,
+  "publication_rules": [
+    "Présenter chaque tarif comme un tarif d'une formule TERA EVENTS.",
+    "Ne jamais présenter ces montants comme des prix moyens du marché.",
+    "Préciser que les prix et les éléments des menus restent susceptibles d'évoluer jusqu'à la signature de la commande.",
+    "Ne jamais citer le nom ou le prénom d'un membre de l'équipe."
+  ],
+  "cocktails_dinatoires": {
+    "service": "Serveurs inclus",
+    "soft_drinks_option": {
+      "price_per_person": 3500,
+      "includes": ["eau minérale", "jus naturels", "sodas", "bières"]
+    },
+    "formulas": [
+      {
+        "name": "Découverte",
+        "choices_per_person": "8 à 10",
+        "composition": {"canapes": "5 à 6 choix", "sandwichs_burgers": "1 à 2 choix", "desserts": "1 à 2 choix"},
+        "prices_per_person": {"30_to_100": 10500, "101_to_200": 9975, "over_200": 9450},
+        "examples": ["pastels poisson ou viande", "nems viande ou poulet", "quiches", "pizzas", "mini burgers", "déguê", "brochettes de fruits"]
+      },
+      {
+        "name": "Événement",
+        "choices_per_person": "10 à 12",
+        "composition": {"canapes": "3 à 5 choix", "grillades": "2 choix", "sandwichs_burgers": "3 choix", "desserts": "2 choix"},
+        "prices_per_person": {"30_to_100": 15500, "101_to_200": 14725, "over_200": 13950},
+        "examples": ["quiches", "pizzas", "samossas", "ailerons panés", "brochettes de poulet, mérou ou filet de bœuf", "mini burgers", "crème brûlée"]
+      },
+      {
+        "name": "Prestige",
+        "choices_per_person": "12 à 15",
+        "composition": {"canapes": "4 à 6 choix", "grillades": "2 choix", "sandwichs_burgers": "2 à 3 choix", "verrines": "2 choix dont 1 premium maximum", "desserts": "2 choix dont 1 premium maximum"},
+        "prices_per_person": {"30_to_100": 27000, "101_to_200": 25650, "over_200": 24300},
+        "examples": ["brochette de gambas", "toast saumon", "bao poulet crispy", "avocat crevette", "verrine exotique mangue", "tarte citron", "panna cotta passion"]
+      }
+    ]
+  },
+  "repas_assis": {
+    "service": "Serveurs et soft drinks inclus",
+    "soft_drinks": ["eau minérale", "jus naturels", "sodas"],
+    "buffet_formulas": [
+      {
+        "name": "Rapide",
+        "composition": {"aperitifs": 2, "entrees": 2, "plats_chauds": 2, "garnitures": 2},
+        "prices_per_person": {"30_to_100": 19000, "101_to_200": 18050, "over_200": 17100}
+      },
+      {
+        "name": "L'Essentiel",
+        "composition": {"aperitifs": 4, "entrees": 2, "plats_chauds": 3, "garnitures": 3, "desserts": 1},
+        "prices_per_person": {"30_to_100": 25000, "101_to_200": 23750, "over_200": 22500}
+      },
+      {
+        "name": "Prestige",
+        "composition": {"aperitifs": 4, "entrees": 2, "plats_chauds": 4, "garnitures": 4, "desserts": 2},
+        "prices_per_person": {"30_to_100": 31000, "101_to_200": 29450, "over_200": 27900}
+      }
+    ],
+    "gala_formulas": [
+      {
+        "name": "Éclair",
+        "composition": {"entrees": 1, "plats_chauds": 2, "garnitures": 2},
+        "prices_per_person": {"30_to_100": 25000, "101_to_200": 23750, "over_200": 22500}
+      },
+      {
+        "name": "L'Essentiel",
+        "composition": {"aperitifs": 4, "entrees": 1, "plats_chauds": 2, "garnitures": 2, "desserts": 1},
+        "prices_per_person": {"30_to_100": 35000, "101_to_200": 33250, "over_200": 31500}
+      },
+      {
+        "name": "Prestige",
+        "composition": {"aperitifs": 6, "entrees": 2, "plats_chauds": 3, "garnitures": 3, "dessert_signature": 1},
+        "prices_per_person": {"30_to_100": 50000, "101_to_200": 47500, "over_200": 45000}
+      }
+    ],
+    "menu_examples": {
+      "local_dishes": ["tchiep poulet ou poisson", "yassa poulet ou poisson", "attiéké et kedjénou de poulet", "placali sauce kôpè", "foutou sauce graine", "alloco", "claclo", "choukouya"],
+      "international_dishes": ["bœuf bourguignon", "couscous marocain", "tagliatelles à la crème", "filet de bœuf en croûte", "magret de canard", "ballotine de mérou"],
+      "desserts": ["brochettes de fruits", "crème brûlée", "flan coco", "déguê", "panna cotta", "moelleux au chocolat"]
+    }
+  },
+  "pauses_cafe": {
+    "morning": [
+      {
+        "name": "Express",
+        "price_per_person": 3500,
+        "composition": {"pastries": "2 choix", "bakery": "pain, beurre et confiture", "hot_drink": "1 choix", "cold_drink": "1 choix", "water": true}
+      },
+      {
+        "name": "Express +",
+        "price_per_person": 5000,
+        "composition": {"pastries": "3 choix", "bakery": "pain, beurre et confiture", "dessert": "1 choix", "hot_drinks": "2 choix", "cold_drink": "1 choix", "water": true}
+      }
+    ],
+    "afternoon": [
+      {
+        "name": "Express",
+        "price_per_person": 3500,
+        "composition": {"canapes": "3 choix", "hot_drink": "1 choix", "cold_drink": "1 choix", "water": true}
+      },
+      {
+        "name": "Express +",
+        "price_per_person": 5000,
+        "composition": {"canapes": "4 choix", "dessert": "1 choix", "hot_drinks": "2 choix", "cold_drink": "1 choix", "water": true}
+      }
+    ],
+    "drink_choices": {
+      "hot": ["thé", "café", "chocolat chaud"],
+      "cold": ["bissap", "gingembre", "ananas", "orange", "cocktail de fruits"]
+    }
+  },
+  "commercial_conditions": {
+    "booking_deposit_percent": 60,
+    "booking_deadline_business_days": 15,
+    "cash_balance_deadline_business_days": 5,
+    "cheque_balance_deadline_business_days": 7,
+    "deposit_refundable_on_cancellation": false,
+    "dietary_requests": ["sans gluten", "sans lactose", "végétalien"],
+    "custom_menu_available": true
+  }
+}

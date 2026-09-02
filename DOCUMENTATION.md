@@ -55,6 +55,19 @@ Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le
 
 L'adresse de validation configurée est `cabinetlalignee@gmail.com`, avec le credential Gmail SMTP déjà opérationnel dans n8n.
 
+Le catalogue traiteur validé est centralisé dans `knowledge/tera-traiteur.json`. Il contient les
+formules Cocktails dînatoires, Repas assis et Pauses café, leurs compositions, leurs paliers de
+prix et les conditions commerciales. Le constructeur l'injecte automatiquement dans le prompt de
+rédaction : les tarifs publiés sont toujours présentés comme ceux des formules TERA EVENTS.
+
+Les informations institutionnelles et commerciales vérifiées sur le site sont centralisées dans
+`knowledge/tera-site-facts.json`. Les deux bases sont injectées ensemble lors de la rédaction. Le
+catalogue transmis reste prioritaire pour toute information relative au traiteur.
+
+Le collecteur hebdomadaire attend les trois jours et toutes leurs slides avant d'envoyer un seul
+e-mail de validation. Aucun nom ou prénom de membre de l'équipe n'est autorisé dans les contenus ;
+un contrôle bloque notamment toute occurrence des membres connus avant la création des visuels.
+
 1. Tester le parcours génération → photo IA → rendu → validation → régénération éventuelle, sans valider la branche Buffer pendant le test.
 2. Vérifier une programmation Buffer contrôlée, puis activer le déclencheur hebdomadaire.
 3. Maquetter les formats Story complémentaires dans Figma.

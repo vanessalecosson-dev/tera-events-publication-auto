@@ -3,6 +3,8 @@ const path = require("path");
 
 const root = __dirname;
 const code = file => fs.readFileSync(path.join(root, file), "utf8");
+const traiteurCatalogue = fs.readFileSync(path.join(root, "knowledge", "tera-traiteur.json"), "utf8").trim();
+const siteFacts = fs.readFileSync(path.join(root, "knowledge", "tera-site-facts.json"), "utf8").trim();
 const nodes = [];
 const connections = {};
 
@@ -15,7 +17,10 @@ function connect(from, to, output = 0) {
   connections[from].main[output].push({ node: to, type: "main", index: 0 });
 }
 function codeNode(name, position, file, mode) {
-  add(name, "n8n-nodes-base.code", position, { jsCode: code(file), ...(mode ? { mode } : {}) });
+  const jsCode = code(file)
+    .replace('"__TERA_TRAITEUR_CATALOGUE__"', traiteurCatalogue)
+    .replace('"__TERA_SITE_FACTS__"', siteFacts);
+  add(name, "n8n-nodes-base.code", position, { jsCode, ...(mode ? { mode } : {}) });
 }
 function decisionNode(name, position, value) {
   add(name, "n8n-nodes-base.if", position, { conditions: { options: { caseSensitive: true, typeValidation: "strict" }, conditions: [{ id: name.toLowerCase().replace(/\W+/g, "-"), leftValue: "={{ $json.decision }}", rightValue: value, operator: { type: "string", operation: "equals" } }], combinator: "and" }, options: {} }, 2.2);
@@ -33,6 +38,7 @@ codeNode("Associer Photo Générée", [1680, 0], "code_attach_generated_backgrou
 codeNode("Préparer Requêtes Visuel", [2400, 0], "code_prepare_visuals.js");
 add("Générer les Visuels", "n8n-nodes-base.httpRequest", [2640, 0], { method: "POST", url: "={{ ($env.TERA_RENDER_BASE_URL || 'https://tera-visuels.srv1896382.hstgr.cloud') + '/render/' + $json.template }}", authentication: "genericCredentialType", genericAuthType: "httpHeaderAuth", sendBody: true, specifyBody: "json", jsonBody: "={{ JSON.stringify($json.render_body) }}", options: { timeout: 120000 } }, 4.2, { retryOnFail: true, maxTries: 3, waitBetweenTries: 5000 });
 add("Associer les Visuels", "n8n-nodes-base.code", [2880, 0], { mode: "runOnceForEachItem", jsCode: "const source = $('Préparer Requêtes Visuel').item.json;\nreturn { json: { ...source, ...$json } };" });
+codeNode("Collecter la Semaine Complète", [3000, 0], "code_collect_weekly_pack.js");
 codeNode("Préparer Pack Hebdomadaire", [3120, 0], "code_prepare_pack.js");
 add("Envoyer Pack de Validation", "n8n-nodes-base.emailSend", [3360, 0], { operation: "sendAndWait", fromEmail: "cabinetlalignee@gmail.com", toEmail: "cabinetlalignee@gmail.com", subject: "TERA EVENTS - Validation hebdomadaire", message: "Voici les trois publications proposées. Validez, modifiez ou refusez chaque contenu.", responseType: "customForm", defineForm: "json", jsonOutput: "={{ $json.formFieldsJson }}", options: {} }, 2.1);
 codeNode("Traiter la Validation Hebdomadaire", [3600, 0], "code_traiter_validation.js");
@@ -57,7 +63,8 @@ connect("Générer Photo de Fond", "Associer Photo Générée");
 connect("Associer Photo Générée", "Préparer Requêtes Visuel");
 connect("Préparer Requêtes Visuel", "Générer les Visuels");
 connect("Générer les Visuels", "Associer les Visuels");
-connect("Associer les Visuels", "Préparer Pack Hebdomadaire");
+connect("Associer les Visuels", "Collecter la Semaine Complète");
+connect("Collecter la Semaine Complète", "Préparer Pack Hebdomadaire");
 connect("Préparer Pack Hebdomadaire", "Envoyer Pack de Validation");
 connect("Envoyer Pack de Validation", "Traiter la Validation Hebdomadaire");
 connect("Traiter la Validation Hebdomadaire", "Est Valider ?");

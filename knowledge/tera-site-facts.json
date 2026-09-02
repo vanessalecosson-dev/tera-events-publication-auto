@@ -1,0 +1,59 @@
+{
+  "source": "https://www.tera.events",
+  "verified_on": "2026-09-02",
+  "brand": {
+    "name": "TERA EVENTS",
+    "positioning": "Agence d'event planning à Abidjan pour les événements corporate et privés",
+    "location": "Centre Commercial TERA, Cocody 2 Plateaux, 7ème tranche, Abidjan, Côte d'Ivoire",
+    "phone_primary": "+225 05 66 22 10 10",
+    "phone_secondary": "+225 07 06 83 99 57",
+    "email": "reservations@tera.events"
+  },
+  "proof_points": {
+    "years_experience": "4+",
+    "events_received_and_organized": "100+",
+    "displayed_client_satisfaction": "100%"
+  },
+  "services": [
+    "event planning",
+    "coordination complète",
+    "coordination partielle",
+    "coordination Jour J",
+    "décoration et scénographie sur mesure",
+    "traiteur et bar",
+    "communication événementielle",
+    "couverture photo et vidéo",
+    "sonorisation et éclairage",
+    "animations et hôtesses",
+    "location de la Salle TERA"
+  ],
+  "event_planning": {
+    "locations": ["Salle TERA", "bureaux du client", "hôtel", "restaurant", "jardin", "autre lieu choisi à Abidjan et environs"],
+    "coordination_complete": ["recherche et sélection du lieu", "concept et scénographie", "sélection et coordination des prestataires", "suivi du budget et du planning", "gestion complète du Jour J"],
+    "coordination_partielle": ["audit de l'organisation existante", "conseil et optimisation", "coordination des prestataires choisis", "supervision de la mise en place", "gestion du Jour J"],
+    "coordination_jour_j": ["prise en main du dossier à J-15", "confirmation des prestataires", "gestion du timing", "résolution des imprévus"],
+    "quote_response_time": "24 à 48 heures"
+  },
+  "corporate": {
+    "audiences": ["entreprises", "PME", "startups", "incubateurs", "ONG", "ambassades", "institutions", "agences de communication", "consultants", "coachs professionnels"],
+    "event_types": ["séminaires", "formations", "conférences", "panels", "conférences de presse", "lancements de produit", "soirées d'entreprise", "cocktails dînatoires", "galas", "afterworks", "team buildings", "journées RH", "rencontres B2B", "networking"],
+    "business_day": {
+      "minimum_participants": 30,
+      "akwaba_half_day_price_per_person": 37500,
+      "nanan_full_day_price_per_person": 45000
+    }
+  },
+  "private_events": ["mariages", "fiançailles", "anniversaires", "baptêmes", "baby showers", "soirées privées", "galas"],
+  "room": {
+    "name": "Salle TERA",
+    "features": ["climatisation", "mobilier", "espace bar", "écran de projection", "sonorisation", "Wi-Fi", "groupe électrogène", "nettoyage avant et après", "parking sécurisé"],
+    "capacity_publication_rule": "Les pages du site affichent des capacités différentes selon la configuration. Ne publier aucun chiffre de capacité sans validation humaine explicite."
+  },
+  "publication_rules": [
+    "Ne jamais citer le nom ou le prénom d'un membre de l'équipe.",
+    "Parler de notre équipe, nos chefs, nos serveurs ou notre équipe de coordination.",
+    "Ne jamais reprendre les noms présents dans les témoignages.",
+    "Ne pas inventer de prix, délai, capacité, équipement ou prestation.",
+    "Pour le traiteur, le catalogue PDF structuré est prioritaire sur le site."
+  ]
+}

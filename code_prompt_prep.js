@@ -6,28 +6,20 @@
 const d = $json;
 const attempt = d.attempt || 1;
 const isRetry = attempt > 1;
+const CATALOGUE_TRAITEUR = "__TERA_TRAITEUR_CATALOGUE__";
+const FAITS_SITE_TERA = "__TERA_SITE_FACTS__";
 
 // ---------------------------------------------------------------------------------------------
 // Faits de marque vérifiés (site tera.events, réseaux, échanges avec le cabinet) — jamais à
 // réinventer, jamais à approximer. Toute donnée chiffrée utilisée dans un texte doit venir d'ici.
 // ---------------------------------------------------------------------------------------------
 const FAITS_TERA = `
-- TERA EVENTS, agence d'event planning à Cocody 2 Plateaux, Abidjan, Côte d'Ivoire.
-- 4+ années d'activité, 100+ événements organisés, 100% de satisfaction client affichée.
-- Salle événementielle modulable de 150 m², son/lumière/climatisation inclus.
-- Les tarifs traiteur sont ceux des formules TERA EVENTS : cocktail dînatoire à partir de
-  10 500 F CFA/personne et repas assis, en buffet ou avec service à table, à partir de
-  19 000 F CFA/personne. L'option boissons coûte 3 500 F CFA/personne. Les tarifs sont dégressifs
-  à partir de 100 personnes et le service traiteur indépendant est proposé dès 30 personnes.
-- Cocktails dînatoires TERA EVENTS : Découverte (8 à 10 choix), Événement (10 à 12 choix) et
-  Prestige (12 à 15 choix).
-- Repas assis TERA EVENTS : Rapide, L'Essentiel, Prestige et Gala. La formule Gala compte
-  9 services. Les serveurs et soft drinks sont inclus dans les formules de repas assis.
-- Formules Event Planning : coordination complète, coordination partielle, coordination Jour J
-  seul. Devis gratuit sous 48h après premier contact.
-- Contact : +225 05 66 22 10 10, reservations@tera.events, tera.events
-- Spécialités locales fréquemment citées : tchep, yassa, attiéké, alloco, cuisine ivoirienne et
-  internationale.
+Les informations générales autorisées proviennent de la base officielle du site TERA EVENTS.
+Les seules formules et données traiteur autorisées proviennent du catalogue structuré issu des PDF.
+Respecte exactement les noms, paliers de convives, compositions, inclusions, délais et tarifs.
+
+BASE OFFICIELLE DU SITE TERA EVENTS :
+${JSON.stringify(FAITS_SITE_TERA, null, 2)}
 `.trim();
 
 // ---------------------------------------------------------------------------------------------
@@ -79,6 +71,9 @@ TON DE MARQUE :
 
 FAITS TERA EVENTS (seule source pour tout chiffre, prix, délai ou nom cité) :
 ${FAITS_TERA}
+
+CATALOGUE TRAITEUR TERA EVENTS :
+${JSON.stringify(CATALOGUE_TRAITEUR, null, 2)}
 `.trim();
 
 // ---------------------------------------------------------------------------------------------

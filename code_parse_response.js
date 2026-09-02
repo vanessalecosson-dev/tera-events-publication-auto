@@ -23,6 +23,17 @@ if (parsed === undefined) {
   parsed = { error: "Parsing JSON échoué", raw: raw || JSON.stringify($json) };
 }
 
+// Garde-fou éditorial : aucun membre de l'équipe ne doit être nommé dans un contenu publié.
+// Cette vérification complète la consigne donnée au modèle et bloque le flux si elle est violée.
+const publicationText = JSON.stringify(parsed);
+const forbiddenPeople = ["Vanessa", "Eric", "Éric"];
+const detectedPerson = forbiddenPeople.find(name =>
+  new RegExp(`\\b${name}\\b`, "iu").test(publicationText)
+);
+if (detectedPerson) {
+  throw new Error("Le contenu généré cite un membre de l'équipe. Une nouvelle rédaction non nominative est requise.");
+}
+
 const source = $("Préparer le Prompt Claude").item.json;
 
 return {
