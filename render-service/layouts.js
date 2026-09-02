@@ -325,8 +325,8 @@ layouts["tera-savoirfairemercredi-s4"] = savoirRoot("savoirfaire-mercredi-s4.png
   t({ static: "04 / 4", font: "Playfair Display", weight: 400, italic: true, size: 20, color: SAVOIR.accentLight, nowrap: true })
 ]}), [
   t({ data: "repere", font: "Playfair Display", weight: 400, italic: true, size: 26, color: SAVOIR.accentLight, nowrap: true }),
-  t({ data: "titre", font: "DM Sans", weight: 800, size: 62, color: SAVOIR.text, lineHeight: 0.95, shadow: "0px 5px 18px rgba(0,0,0,0.4)" }),
-  t({ data: "texte", font: "DM Sans", weight: 400, size: 24, color: SAVOIR.textDim, lineHeight: 1.38 }),
+  t({ data: "titre", font: "DM Sans", weight: 800, size: 74, color: SAVOIR.text, lineHeight: 0.95, shadow: "0px 5px 18px rgba(0,0,0,0.4)" }),
+  t({ data: "texte", font: "DM Sans", weight: 400, size: 26, color: SAVOIR.textDim, lineHeight: 1.38 }),
   pill({ bg: SAVOIR.accent, padding: "20px 30px", alignSelf: "stretch", children: [
     row({ justify: "between", align: "center", w: 936, children: [
       t({ data: "cta_question", font: "DM Sans", weight: 700, size: 20, color: SAVOIR.bg, nowrap: true }),
@@ -334,6 +334,10 @@ layouts["tera-savoirfairemercredi-s4"] = savoirRoot("savoirfaire-mercredi-s4.png
     ]})
   ]})
 ]);
+layouts["tera-savoirfairemercredi-s4"].photoGradient = {
+  direction: "to bottom",
+  stops: ["rgba(7,26,63,0.33) 0%", "rgba(7,26,63,0.6) 42%", "rgba(6,20,52,0.99) 100%"]
+};
 
 // =========================================================================
 // SAVOIR-FAIRE MERCREDI — Traiteur (carrousel "GAMME", 4 slides : découverte/prestige/gala +
