@@ -8,7 +8,8 @@ TERA EVENTS publie 3 fois par semaine (lundi, mercredi, vendredi) sur Facebook, 
 
 **Composants prévus :**
 - **n8n** — même instance que La Lignée, nouveau workflow indépendant, pas encore créé.
-- **Claude (Anthropic API)** — rédaction du texte, aucune recherche web (le contenu porte sur les services propres de TERA, pas des statistiques externes).
+- **Claude (Anthropic API)** — rédaction dynamique des textes selon le sujet, sans recherche web (le contenu porte sur les services propres de TERA, pas des statistiques externes).
+- **Gemini Image** — génération des photos de fond contextuelles pour les gabarits photographiques. Aucun texte, logo ni élément de composition n'est généré dans l'image ; la charte reste appliquée par Figma et le render-service.
 - **`render-service`** — service Node.js/Playwright, code déjà écrit et testé localement (`render-service/`), pas encore déployé sur le VPS. Doit tourner dans son propre conteneur Docker (`tera-render`), séparé de `la-lignee-render`.
 - **Buffer** — module de préparation présent, mais connexion et identifiants de canaux encore manquants.
 
@@ -36,7 +37,7 @@ Les pools de variantes ne contiennent que ce qui est réellement dessiné dans F
 - `code_prepare_buffer.js` — prépare une programmation pour Facebook, Instagram et LinkedIn à partir des canaux définis dans l'environnement n8n.
 - `render-service/` — service de rendu, voir §4.
 
-**Encore à intégrer dans n8n** : l'appel Anthropic, le rendu, le formulaire de validation, les branches de décision, la boucle de régénération et l'appel Buffer.
+L'export `workflow-tera-events.json` assemble l'appel Anthropic, la branche facultative de photo IA, le rendu, le formulaire de validation, les branches de décision, la boucle de régénération et l'appel Buffer. Il est généré par `build_n8n_workflow.js` et reste désactivé jusqu'à la configuration des credentials et aux essais de bout en bout.
 
 ## 4. render-service
 
@@ -53,8 +54,8 @@ Chaque gabarit conserve une photo ou un dégradé Figma comme fond canonique. Le
 ## 5. Prochaines étapes
 
 1. Déployer `render-service` sur le VPS existant dans un conteneur `tera-render` séparé.
-2. Créer le workflow n8n, désactivé à la création pour revue.
-3. Connecter Buffer pour TERA et renseigner les identifiants de canaux dans l'environnement n8n.
+2. Importer `workflow-tera-events.json` dans n8n et conserver le workflow désactivé pendant la revue.
+3. Associer les credentials Anthropic, Gemini, e-mail, render-service et Buffer, puis renseigner les identifiants de canaux dans l'environnement n8n.
 4. Tester le parcours génération → rendu → validation → régénération éventuelle → programmation.
 5. Maquetter les variantes Décoration, Salle et les formats Story.
 

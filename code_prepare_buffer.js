@@ -29,6 +29,13 @@ if (!media.length) throw new Error(`Aucun visuel rendu pour la publication du ${
 const caption = renderItems[0]?.caption || d.caption || "";
 if (!caption) throw new Error(`Aucune légende disponible pour la publication du ${d.jour}.`);
 
+const mutation = `mutation CreatePost($input: CreatePostInput!) {
+  createPost(input: $input) {
+    ... on PostActionSuccess { post { id text dueAt } }
+    ... on MutationError { message }
+  }
+}`;
+
 return Object.entries(CHANNELS).map(([network, channelId]) => ({
   json: {
     post_id: renderItems[0]?.post_id,
@@ -38,6 +45,21 @@ return Object.entries(CHANNELS).map(([network, channelId]) => ({
     due_at: d.target_due_at,
     text: caption,
     media,
-    status: "pending_buffer"
+    status: "pending_buffer",
+    graphql_body: {
+      query: mutation,
+      variables: {
+        input: {
+          text: caption,
+          channelId,
+          assets: media.map(url => ({ image: { url } })),
+          schedulingType: "automatic",
+          mode: "customScheduled",
+          dueAt: d.target_due_at,
+          ...(network === "facebook" ? { metadata: { facebook: { type: "post" } } } : {}),
+          ...(network === "instagram" ? { metadata: { instagram: { type: "post", shouldShareToFeed: true } } } : {})
+        }
+      }
+    }
   }
 }));
