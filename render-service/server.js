@@ -75,7 +75,10 @@ function renderNode(n, data) {
     const flex = n.nowrap ? "flex-shrink:0;" : "flex:1 1 0%; min-width:0;";
     const underline = n.underline ? "text-decoration:underline;" : "";
     const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
-    return `<div style="${position} font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${flex}">${escapeHtml(text)}</div>`;
+    const fit = n.fit
+      ? `data-fit-text="1" data-max-width="${n.fit.maxWidth || n.w || 0}" data-max-height="${n.fit.maxHeight || 0}" data-min-size="${n.fit.minSize || 12}"`
+      : "";
+    return `<div ${fit} style="${position} font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${flex}">${escapeHtml(text)}</div>`;
   }
 
   // Titre bicolore : le début en couleur normale, la fin en italique/couleur accent — reproduit
@@ -274,6 +277,22 @@ app.post("/render/:template", async (req, res) => {
     const browser = await getBrowser();
     const page = await browser.newPage({ viewport: { width: cfg.width, height: cfg.height } });
     await page.setContent(html, { waitUntil: "networkidle" });
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      for (const el of document.querySelectorAll("[data-fit-text]")) {
+        const maxWidth = Number(el.dataset.maxWidth || 0);
+        const maxHeight = Number(el.dataset.maxHeight || 0);
+        const minSize = Number(el.dataset.minSize || 12);
+        let size = Number.parseFloat(getComputedStyle(el).fontSize);
+        const overflows = () =>
+          (maxWidth > 0 && el.scrollWidth > maxWidth + 1) ||
+          (maxHeight > 0 && el.scrollHeight > maxHeight + 1);
+        while (size > minSize && overflows()) {
+          size -= 1;
+          el.style.fontSize = `${size}px`;
+        }
+      }
+    });
     const buffer = await page.screenshot({ type: "png" });
     await page.close();
 

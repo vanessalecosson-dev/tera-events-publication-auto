@@ -65,6 +65,14 @@ function buildVisualRequests(d) {
   const postId = $execution.id + "-" + d.jour;
   const backgroundImages = Array.isArray(d.background_images) ? d.background_images : [];
 
+  // La grande valeur de la slide 2 doit rester aussi courte que dans le gabarit Figma.
+  // Si une phrase a �t� produite, reprendre le chiffre et l'unit� de la couverture.
+  if (isChiffreDuMercredi && slides[1] && String(slides[1].statistique || "").length > 14) {
+    const chiffre = String(slides[0]?.chiffre || "").trim();
+    const unite = String(slides[0]?.unite || "").trim();
+    slides[1] = { ...slides[1], statistique: [chiffre, unite].filter(Boolean).join(" ") };
+  }
+
   return templates.map((template, idx) => {
     const slideFields = slides[idx] || {};
     // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.

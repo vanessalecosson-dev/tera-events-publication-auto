@@ -516,7 +516,7 @@ layouts["tera-chiffremercredi-s2"] = {
       t({ data: "surtitre", font: "Playfair Display", weight: 400, italic: true, size: 35, color: CHIFFRE_C.cyan, align: "center", nowrap: true })
     ]}),
     grp({ x: 76, y: 474, w: 969, align: "center", children: [
-      t({ data: "statistique", font: "Poppins", weight: 800, size: 156, color: CHIFFRE_C.accent, align: "center", nowrap: true, lineHeight: 1.2, shadow: "0px 12px 30px rgba(0,0,0,0.16)" })
+      t({ data: "statistique", w: 969, font: "Poppins", weight: 800, size: 156, color: CHIFFRE_C.accent, align: "center", nowrap: true, lineHeight: 1.2, shadow: "0px 12px 30px rgba(0,0,0,0.16)", fit: { maxWidth: 969, maxHeight: 188, minSize: 64 } })
     ]}),
     row({ x: 329, y: 717, w: 463.197, h: 87.045, justify: "center", align: "center", children: [
       pill({ bg: "#ffffff", rotate: 2, w: 463.197, h: 87.045, padding: "10px 28px", children: [
@@ -524,10 +524,10 @@ layouts["tera-chiffremercredi-s2"] = {
       ]})
     ]}),
     grp({ x: 150.5, y: 822, w: 820, align: "center", children: [
-      t({ data: "titre", w: 820, font: "Poppins", weight: 700, size: 58, color: "#ffffff", align: "center", lineHeight: 1.08 })
+      t({ data: "titre", w: 820, font: "Poppins", weight: 700, size: 58, color: "#ffffff", align: "center", lineHeight: 1.08, fit: { maxWidth: 820, maxHeight: 126, minSize: 42 } })
     ]}),
     grp({ x: 135.5, y: 971, w: 850, align: "center", children: [
-      t({ data: "texte", w: 850, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, align: "center", lineHeight: 1.45 })
+      t({ data: "texte", w: 850, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, align: "center", lineHeight: 1.45, fit: { maxWidth: 850, maxHeight: 110, minSize: 20 } })
     ]}),
     { type: "outlinePill", x: 76, y: 1187, border: CHIFFRE_C.textDim, padding: "11px 24px", h: 52, children: [
       t({ static: "www.tera.events", font: "Poppins", weight: 400, size: 25, color: "#ffffff", nowrap: true })
@@ -556,21 +556,21 @@ layouts["tera-chiffremercredi-s3"] = {
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "1", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
           grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
             t({ data: "conseil1_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil1_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
+            t({ data: "conseil1_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
           ]})
         ]}),
         row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "2", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
           grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
             t({ data: "conseil2_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil2_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
+            t({ data: "conseil2_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
           ]})
         ]}),
         row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "3", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
           grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
             t({ data: "conseil3_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil3_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true })
+            t({ data: "conseil3_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
           ]})
         ]})
       ]})
@@ -636,7 +636,7 @@ layouts["tera-chiffremercredi-s5"] = {
       t({ data: "badge", font: "Poppins", weight: 800, size: 30, color: CHIFFRE_C.bg, uppercase: true, nowrap: true })
     ]},
     grp({ x: 130.5, y: 518, w: 860, align: "center", children: [
-      t({ data: "titre", w: 860, font: "Poppins", weight: 800, size: 68, color: "#ffffff", align: "center", lineHeight: 1.02 })
+      t({ data: "titre", w: 860, font: "Poppins", weight: 800, size: 68, color: "#ffffff", align: "center", lineHeight: 1.02, fit: { maxWidth: 860, maxHeight: 220, minSize: 48 } })
     ]}),
     { type: "line", x: 505.5, y: 765, w: 110, h: 7, color: CHIFFRE_C.accent, opacity: 1, rounded: true },
     grp({ x: 145.5, y: 814, w: 830, align: "center", children: [

@@ -206,13 +206,17 @@ const retryNote = isRetry
   ? ` Ceci est une nouvelle tentative (proposition n°${attempt}) : une première version n'a pas été validée par le cabinet${d.modification_feedback ? `, avec ce retour : "${d.modification_feedback}"` : ""}. Corrige en conséquence tout en respectant strictement la charte.`
   : "";
 
+const layoutRule = key === "savoirfaire:chiffre"
+  ? `\nCONTRAINTES IMPERATIVES DU GABARIT : slide 2, statistique = nombre et unite uniquement, 14 caracteres maximum ; titre = 55 caracteres maximum ; texte = 120 caracteres maximum. Slide 3, chaque texte de conseil = 75 caracteres maximum. Slide 5, titre = 70 caracteres maximum. Ne depasse jamais ces limites.`
+  : "";
+
 const systemPrompt = `${CHARTE}
 
 Aujourd'hui : ${d.jour}. Angle : ${config.angle}
 
 Tu dois répondre UNIQUEMENT avec un objet JSON valide, sans texte avant ni après, sans balises
 markdown, respectant exactement ce schéma :
-${config.schema}
+${config.schema}${layoutRule}
 
 RAPPEL : ta toute dernière réponse ne doit contenir STRICTEMENT RIEN d'autre que l'objet JSON. Le
 premier caractère de ta réponse doit être { et le dernier doit être }.`;
