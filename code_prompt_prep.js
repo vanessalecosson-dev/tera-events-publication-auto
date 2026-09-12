@@ -207,7 +207,7 @@ const retryNote = isRetry
   : "";
 
 const layoutRule = key === "savoirfaire:chiffre"
-  ? `\nCONTRAINTES IMPERATIVES DU GABARIT : slide 2, statistique = nombre et unite uniquement, 14 caracteres maximum ; titre = 55 caracteres maximum ; texte = 120 caracteres maximum. Slide 3, titre = 55 caracteres maximum et chaque texte de conseil = 75 caracteres maximum. Slide 5, titre = 70 caracteres maximum. Ne depasse jamais ces limites.`
+  ? `\nCONTRAINTES IMPERATIVES DU GABARIT : slide 2, statistique = nombre et unite uniquement, 14 caracteres maximum ; titre = 55 caracteres maximum ; texte = 120 caracteres maximum. Slide 3, titre = 55 caracteres maximum et chaque texte de conseil = 75 caracteres maximum. Toute formulation interrogative commencant par Pourquoi, Comment, Qui, Que, Quel, Quand, Ou ou Combien doit obligatoirement se terminer par un point d'interrogation. Slide 5, titre = 70 caracteres maximum. Ne depasse jamais ces limites.`
   : "";
 
 const variationRule = `\nVARIATION OBLIGATOIRE : fais varier le sujet, l'accroche, les exemples et la formulation d'une semaine a l'autre. Ne recycle jamais une publication precedente.`;
