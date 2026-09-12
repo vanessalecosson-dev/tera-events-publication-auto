@@ -212,7 +212,7 @@ const layoutRule = key === "savoirfaire:chiffre"
 
 const variationRule = `\nVARIATION OBLIGATOIRE : fais varier le sujet, l'accroche, les exemples et la formulation d'une semaine a l'autre. Ne recycle jamais une publication precedente.`;
 
-const visualCopyRule = `\nREGLE ABSOLUE POUR LES VISUELS : ecris court et precis. Un titre doit se lire en un coup d'oeil, sans phrase inutile ni surcharge. Respecte strictement les nombres de mots et de caracteres du schema. Si une idee est trop longue, raccourcis-la au lieu de remplir le visuel. Reserve les explications developpees a la legende du post.`;
+const visualCopyRule = `\nREGLE ABSOLUE POUR LES VISUELS : ecris court et precis. Un titre doit se lire en un coup d'oeil, sans phrase inutile ni surcharge. Chaque texte secondaire pose sur une image doit contenir au maximum 16 mots et rester idealement sous 100 caracteres. Respecte strictement les limites plus courtes du schema. Si une idee est trop longue, raccourcis-la au lieu de remplir le visuel. Reserve les explications developpees a la legende du post. Le contenu doit rester lisible sur l'ecran d'un telephone.`;
 
 const systemPrompt = `${CHARTE}
 

@@ -63,6 +63,11 @@ function renderNode(n, data) {
   if (n.type === "text") {
     const text = resolveText(n, data);
     if (!text) return "";
+    // Les paragraphes utiles doivent rester lisibles lorsque le visuel est ramen� � la largeur
+    // d'un t�l�phone. Les titres, badges et mentions de navigation conservent leur hi�rarchie.
+    const isReadableBody = /^(texte|insight|body|moment\d+_texte|conseil\d+_texte)$/i.test(n.data || "");
+    const mobileMinSize = isReadableBody ? (n.mobileMinSize || 30) : 0;
+    const renderedSize = Math.max(n.size, mobileMinSize);
     const rotate = n.rotate ? `transform:rotate(${n.rotate}deg);` : "";
     const shadow = n.shadow ? `text-shadow:${n.shadow};` : "";
     const whiteSpace = n.nowrap ? "nowrap" : "pre-wrap";
@@ -77,9 +82,9 @@ function renderNode(n, data) {
     const balance = n.balance ? "text-wrap:balance;" : "";
     const position = n.x !== undefined ? `position:absolute; left:${n.x}px; top:${n.y}px;` : "";
     const fit = n.fit
-      ? `data-fit-text="1" data-max-width="${n.fit.maxWidth || n.w || 0}" data-max-height="${n.fit.maxHeight || 0}" data-min-size="${n.fit.minSize || 12}"`
+      ? `data-fit-text="1" data-max-width="${n.fit.maxWidth || n.w || 0}" data-max-height="${n.fit.maxHeight || 0}" data-min-size="${Math.max(n.fit.minSize || 12, mobileMinSize)}"`
       : "";
-    return `<div ${fit} style="${position} font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${n.size}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${balance} ${flex}">${escapeHtml(text)}</div>`;
+    return `<div ${fit} style="${position} font-family:'${n.font}', sans-serif; font-weight:${n.weight}; font-size:${renderedSize}px; line-height:${n.lineHeight || 1.2}; font-style:${n.italic ? "italic" : "normal"}; color:${n.color}; text-align:${textAlign}; text-transform:${n.uppercase ? "uppercase" : "none"}; white-space:${whiteSpace}; word-wrap:break-word; ${w} ${rotate} ${shadow} ${underline} ${balance} ${flex}">${escapeHtml(text)}</div>`;
   }
 
   // Titre bicolore : le début en couleur normale, la fin en italique/couleur accent — reproduit
