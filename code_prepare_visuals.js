@@ -73,6 +73,23 @@ function buildVisualRequests(d) {
     slides[1] = { ...slides[1], statistique: [chiffre, unite].filter(Boolean).join(" ") };
   }
 
+  // Les formulations interrogatives doivent toujours porter leur ponctuation, m�me si le
+  // mod�le l'a omise. Cette normalisation s'applique au titre et aux trois questions de la slide 3.
+  if (isChiffreDuMercredi && slides[2]) {
+    const withQuestionMark = (value) => {
+      const text = String(value || "").trim();
+      if (!/^(pourquoi|comment|qui|que|quel|quelle|quels|quelles|quand|o�|combien)\b/i.test(text)) return text;
+      return text.replace(/[.!?…]+$/u, "").trim() + " ?";
+    };
+    slides[2] = {
+      ...slides[2],
+      titre: withQuestionMark(slides[2].titre),
+      conseil1_titre: withQuestionMark(slides[2].conseil1_titre),
+      conseil2_titre: withQuestionMark(slides[2].conseil2_titre),
+      conseil3_titre: withQuestionMark(slides[2].conseil3_titre)
+    };
+  }
+
   return templates.map((template, idx) => {
     const slideFields = slides[idx] || {};
     // L'image est choisie en amont dans la banque média, indépendamment de la rédaction Claude.
