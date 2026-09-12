@@ -207,8 +207,12 @@ const retryNote = isRetry
   : "";
 
 const layoutRule = key === "savoirfaire:chiffre"
-  ? `\nCONTRAINTES IMPERATIVES DU GABARIT : slide 2, statistique = nombre et unite uniquement, 14 caracteres maximum ; titre = 55 caracteres maximum ; texte = 120 caracteres maximum. Slide 3, chaque texte de conseil = 75 caracteres maximum. Slide 5, titre = 70 caracteres maximum. Ne depasse jamais ces limites.`
+  ? `\nCONTRAINTES IMPERATIVES DU GABARIT : slide 2, statistique = nombre et unite uniquement, 14 caracteres maximum ; titre = 55 caracteres maximum ; texte = 120 caracteres maximum. Slide 3, titre = 55 caracteres maximum et chaque texte de conseil = 75 caracteres maximum. Slide 5, titre = 70 caracteres maximum. Ne depasse jamais ces limites.`
   : "";
+
+const variationRule = `\nVARIATION OBLIGATOIRE : fais varier le sujet, l'accroche, les exemples et la formulation d'une semaine a l'autre. Ne recycle jamais une publication precedente.`;
+
+const visualCopyRule = `\nREGLE ABSOLUE POUR LES VISUELS : ecris court et precis. Un titre doit se lire en un coup d'oeil, sans phrase inutile ni surcharge. Respecte strictement les nombres de mots et de caracteres du schema. Si une idee est trop longue, raccourcis-la au lieu de remplir le visuel. Reserve les explications developpees a la legende du post.`;
 
 const systemPrompt = `${CHARTE}
 
@@ -216,7 +220,7 @@ Aujourd'hui : ${d.jour}. Angle : ${config.angle}
 
 Tu dois répondre UNIQUEMENT avec un objet JSON valide, sans texte avant ni après, sans balises
 markdown, respectant exactement ce schéma :
-${config.schema}${layoutRule}
+${config.schema}${layoutRule}${variationRule}${visualCopyRule}
 
 RAPPEL : ta toute dernière réponse ne doit contenir STRICTEMENT RIEN d'autre que l'objet JSON. Le
 premier caractère de ta réponse doit être { et le dernier doit être }.`;

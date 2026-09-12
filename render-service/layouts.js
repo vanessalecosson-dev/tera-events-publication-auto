@@ -550,27 +550,27 @@ layouts["tera-chiffremercredi-s3"] = {
     { type: "line", x: 76, y: 265, w: 969, h: 2, color: "#65d7fa", opacity: 0.85 },
     grp({ x: 76, y: 394, w: 969, direction: "column", gap: 40, children: [
       t({ data: "surtitre", font: "Playfair Display", weight: 400, italic: true, size: 35, color: CHIFFRE_C.cyan, nowrap: true }),
-      t({ data: "titre", w: 969, font: "Poppins", weight: 800, size: 58, color: "#ffffff", lineHeight: 1.02, nowrap: true }),
+      t({ data: "titre", w: 969, font: "Poppins", weight: 800, size: 58, color: "#ffffff", lineHeight: 1.02, balance: true, fit: { maxWidth: 969, maxHeight: 120, minSize: 42 } }),
       grp({ direction: "column", gap: 32, children: [
         row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "1", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
-            t({ data: "conseil1_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil1_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
+          grp({ w: 895, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil1_titre", w: 895, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true, fit: { maxWidth: 895, maxHeight: 42, minSize: 26 } }),
+            t({ data: "conseil1_texte", w: 895, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, fit: { maxWidth: 895, maxHeight: 70, minSize: 19 } })
           ]})
         ]}),
         row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "2", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
-            t({ data: "conseil2_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil2_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
+          grp({ w: 895, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil2_titre", w: 895, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true, fit: { maxWidth: 895, maxHeight: 42, minSize: 26 } }),
+            t({ data: "conseil2_texte", w: 895, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, fit: { maxWidth: 895, maxHeight: 70, minSize: 19 } })
           ]})
         ]}),
         row({ h: 150, gap: 16, align: "center", children: [
           { type: "circleBadge", size: 58, bg: CHIFFRE_C.accent, static: "3", font: "Poppins", weight: 800, textSize: 24, textColor: CHIFFRE_C.bg },
-          grp({ w: 928, h: 150, direction: "column", justify: "center", gap: 15, children: [
-            t({ data: "conseil3_titre", w: 928, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true }),
-            t({ data: "conseil3_texte", w: 928, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, nowrap: true, fit: { maxWidth: 928, maxHeight: 36, minSize: 18 } })
+          grp({ w: 895, h: 150, direction: "column", justify: "center", gap: 15, children: [
+            t({ data: "conseil3_titre", w: 895, font: "Poppins", weight: 700, size: 35, color: "#ffffff", nowrap: true, fit: { maxWidth: 895, maxHeight: 42, minSize: 26 } }),
+            t({ data: "conseil3_texte", w: 895, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, lineHeight: 1.4, fit: { maxWidth: 895, maxHeight: 70, minSize: 19 } })
           ]})
         ]})
       ]})
