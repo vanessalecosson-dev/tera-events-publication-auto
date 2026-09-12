@@ -635,7 +635,7 @@ layouts["tera-chiffremercredi-s5"] = {
     grp({ x: 145.5, y: 814, w: 830, align: "center", children: [
       t({ data: "texte", w: 830, font: "Poppins", weight: 400, size: 25, color: CHIFFRE_C.textDim, align: "center", lineHeight: 1.5 })
     ]}),
-    { type: "pill", x: 76, y: 927, w: 969, h: 110, bg: "#ffffff", padding: "22px 30px", children: [
+    { type: "pill", x: 76, y: 960, w: 969, h: 110, bg: "#ffffff", padding: "22px 30px", children: [
       row({ w: 909, justify: "between", align: "center", children: [
         t({ data: "cta_question", font: "Poppins", weight: 700, size: 25, color: CHIFFRE_C.bg, nowrap: true }),
         t({ data: "cta_action", font: "Poppins", weight: 800, size: 25, color: CHIFFRE_C.bg, uppercase: true, nowrap: true })
